@@ -7,6 +7,8 @@ A modern desktop notepad for writing and running HTML, CSS, and JavaScript.
 import os
 import sys
 import json
+import time
+import threading
 import subprocess
 from datetime import datetime
 
@@ -26,6 +28,7 @@ from gi.repository import Gtk, Gdk, GLib, WebKit2, Pango, GdkPixbuf
 # Path constants
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATES_PATH = os.path.join(APP_DIR, "assets", "templates.json")
+LAB_PROGRAMS_PATH = os.path.join(APP_DIR, "assets", "lab_programs.json")
 CACHE_DIR = os.path.expanduser("~/.cache/html-notepad")
 AUTOSAVE_PATH = os.path.join(CACHE_DIR, "autosave.html")
 ICON_PATH = os.path.join(APP_DIR, "assets", "icon.png")
@@ -85,6 +88,42 @@ headerbar {
     padding: 1px 6px;
     font-size: 11px;
     font-weight: bold;
+}
+
+.node-button {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 6px 14px;
+    border: 1px solid #075985;
+    box-shadow: 0 2px 5px rgba(2, 132, 199, 0.4);
+    transition: all 150ms ease-in-out;
+}
+
+.node-button:hover {
+    background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.5);
+}
+
+.node-button:active {
+    background: #0369a1;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.lab-button {
+    background: #18181b;
+    color: #e4e4e7;
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    padding: 4px 10px;
+    transition: all 120ms ease;
+}
+
+.lab-button:hover {
+    background: #27272a;
+    color: #38bdf8;
+    border-color: #38bdf8;
 }
 """
 
@@ -152,6 +191,7 @@ class HTMLNotepadWindow(Gtk.Window):
         self.font_size = 12
         self.dark_mode = True
         self.templates = self.load_templates()
+        self.lab_programs = self.load_lab_programs()
 
         # WebKit & Execution Window state
         self.execution_window = None
@@ -189,6 +229,15 @@ class HTMLNotepadWindow(Gtk.Window):
             except Exception as e:
                 print(f"Error loading templates: {e}")
         return {}
+
+    def load_lab_programs(self):
+        if os.path.exists(LAB_PROGRAMS_PATH):
+            try:
+                with open(LAB_PROGRAMS_PATH, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception as e:
+                print(f"Error loading lab programs: {e}")
+        return []
 
     def setup_execution_engine(self):
         self.ucm = WebKit2.UserContentManager()
@@ -293,12 +342,80 @@ class HTMLNotepadWindow(Gtk.Window):
         template_menu_btn.set_popup(tmpl_menu)
         self.header.pack_start(template_menu_btn)
 
+        # ==========================================
+        # 📚 LAB EXAM PROGRAMS MENU (1–32 FROM PDF)
+        # ==========================================
+        lab_menu_btn = Gtk.MenuButton()
+        lab_menu_btn.get_style_context().add_class("lab-button")
+        lab_menu_btn.set_tooltip_text("Load Lab Exam Programs (PDF 1–32)")
+
+        lab_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        lab_icon = Gtk.Image.new_from_icon_name("accessories-dictionary-symbolic", Gtk.IconSize.BUTTON)
+        lab_label = Gtk.Label(label="<b>📚 Lab Programs (PDF)</b>")
+        lab_label.set_use_markup(True)
+        lab_box.pack_start(lab_icon, False, False, 0)
+        lab_box.pack_start(lab_label, False, False, 0)
+        lab_menu_btn.add(lab_box)
+
+        lab_menu = Gtk.Menu()
+        units_dict = {}
+        for p in self.lab_programs:
+            u = p.get("unit", "Other")
+            if u not in units_dict:
+                units_dict[u] = []
+            units_dict[u].append(p)
+
+        unit_icons = {
+            "1. HTML": "🌐",
+            "2. Bootstrap": "🎨",
+            "3. JavaScript": "⚡",
+            "4. JS Validation": "📝",
+            "5. XML with DTD": "📄",
+            "6. Servlets": "☕",
+            "7. Weather App": "🌦️",
+            "8. JDBC": "🗄️",
+            "9. Node.js": "🟢",
+            "10. Extra: CSS": "🖌️"
+        }
+
+        for u_name, progs in units_dict.items():
+            u_icon = unit_icons.get(u_name, "📁")
+            u_item = Gtk.MenuItem(label=f"{u_icon} {u_name}")
+            u_submenu = Gtk.Menu()
+
+            for p in progs:
+                files = p.get("files", [])
+                if len(files) == 1:
+                    f = files[0]
+                    p_menu_item = Gtk.MenuItem(label=f"P{p['number']:02d}: {f['name']} — {p['title'][:32]}")
+                    p_menu_item.connect("activate", lambda w, pr=p, fl=f: self.load_lab_file(pr, fl))
+                    u_submenu.append(p_menu_item)
+                elif len(files) > 1:
+                    p_parent_item = Gtk.MenuItem(label=f"P{p['number']:02d}: {p['title'][:30]} ({len(files)} files)")
+                    file_submenu = Gtk.Menu()
+                    for f in files:
+                        desc = f" — {f['description']}" if f.get("description") else ""
+                        f_item = Gtk.MenuItem(label=f"📄 {f['name']}{desc}")
+                        f_item.connect("activate", lambda w, pr=p, fl=f: self.load_lab_file(pr, fl))
+                        file_submenu.append(f_item)
+                    file_submenu.show_all()
+                    p_parent_item.set_submenu(file_submenu)
+                    u_submenu.append(p_parent_item)
+
+            u_submenu.show_all()
+            u_item.set_submenu(u_submenu)
+            lab_menu.append(u_item)
+
+        lab_menu.show_all()
+        lab_menu_btn.set_popup(lab_menu)
+        self.header.pack_start(lab_menu_btn)
+
         # RIGHT SIDE CONTROLS
 
-        # BIG PLAY BUTTON
+        # BIG PLAY BUTTON (Web/Auto)
         self.btn_play = Gtk.Button()
         self.btn_play.get_style_context().add_class("play-button")
-        self.btn_play.set_tooltip_text("Execute HTML (Ctrl+Enter)")
+        self.btn_play.set_tooltip_text("Execute HTML / Auto-run (Ctrl+Enter)")
 
         play_content = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         play_icon = Gtk.Image.new_from_icon_name("media-playback-start-symbolic", Gtk.IconSize.BUTTON)
@@ -309,6 +426,21 @@ class HTMLNotepadWindow(Gtk.Window):
         self.btn_play.add(play_content)
         self.btn_play.connect("clicked", lambda w: self.execute_code())
         self.header.pack_end(self.btn_play)
+
+        # NODE.JS RUN BUTTON
+        self.btn_node = Gtk.Button()
+        self.btn_node.get_style_context().add_class("node-button")
+        self.btn_node.set_tooltip_text("Execute with Node.js v26 (Ctrl+Shift+Enter)")
+
+        node_content = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        node_icon = Gtk.Image.new_from_icon_name("system-run-symbolic", Gtk.IconSize.BUTTON)
+        node_label = Gtk.Label(label="<b>🟢 Node.js</b>")
+        node_label.set_use_markup(True)
+        node_content.pack_start(node_icon, False, False, 0)
+        node_content.pack_start(node_label, False, False, 0)
+        self.btn_node.add(node_content)
+        self.btn_node.connect("clicked", lambda w: self.execute_node_code())
+        self.header.pack_end(self.btn_node)
 
         # Actions Menu (Three dots / cog)
         more_menu_btn = Gtk.MenuButton()
@@ -500,7 +632,12 @@ class HTMLNotepadWindow(Gtk.Window):
     def on_key_pressed(self, widget, event):
         state = event.state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.MOD1_MASK)
 
-        # Ctrl + Enter -> Execute Code (Preview Window only)
+        # Ctrl + Shift + Enter -> Execute directly with Node.js
+        if (event.state & Gdk.ModifierType.CONTROL_MASK) and (event.state & Gdk.ModifierType.SHIFT_MASK) and event.keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
+            self.execute_node_code()
+            return True
+
+        # Ctrl + Enter -> Execute Code (Auto-detects Node.js vs WebKit preview)
         if state == Gdk.ModifierType.CONTROL_MASK and event.keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
             self.execute_code()
             return True
@@ -564,8 +701,23 @@ class HTMLNotepadWindow(Gtk.Window):
         self.editor_buffer.set_text(text)
 
     def execute_code(self):
-        """Executes the HTML content inside the Execution Window."""
+        """Executes code: auto-detects Node.js scripts vs WebKit HTML preview."""
         code = self.get_editor_text()
+        if not code.strip():
+            self.exec_status_lbl.set_text("Ready")
+            return
+
+        # Auto-detect if this is a Node.js / pure JavaScript script
+        is_node = False
+        if self.current_filepath and self.current_filepath.endswith(".js"):
+            is_node = True
+        elif not any(tag in code.lower() for tag in ["<html", "<!doctype", "<body", "<div", "<table", "<form", "<style"]):
+            if any(kw in code for kw in ["console.log", "const ", "let ", "var ", "function ", "require("]):
+                is_node = True
+
+        if is_node:
+            self.execute_node_code(code)
+            return
 
         # Inject the console interception script and OLED dark default styling
         injected_code = code
@@ -592,17 +744,6 @@ class HTMLNotepadWindow(Gtk.Window):
         if self.current_filepath:
             base_uri = f"file://{os.path.dirname(os.path.abspath(self.current_filepath))}/"
 
-        if not code.strip():
-            self.exec_status_lbl.set_text("Ready")
-            if self.execution_window and self.execution_window.get_visible():
-                self.webview.load_html("<!DOCTYPE html><html><body></body></html>", base_uri)
-            if os.path.exists(AUTOSAVE_PATH):
-                try:
-                    os.remove(AUTOSAVE_PATH)
-                except Exception:
-                    pass
-            return
-
         # Ensure execution window exists and load HTML
         self.ensure_execution_window()
         self.webview.load_html(injected_code, base_uri)
@@ -617,6 +758,112 @@ class HTMLNotepadWindow(Gtk.Window):
 
         # Save to autosave cache in background
         self.autosave()
+
+    def execute_node_code(self, code=None):
+        """Executes JavaScript / Node.js directly using /usr/bin/node and streams output to console."""
+        if code is None:
+            code = self.get_editor_text()
+        if not code.strip():
+            return
+
+        # Ensure terminal drawer is visible and clear previous output
+        self.btn_console.set_active(True)
+        self.clear_console()
+
+        now_str = datetime.now().strftime("%H:%M:%S")
+        end_iter = self.console_buffer.get_end_iter()
+        self.console_buffer.insert_with_tags(end_iter, f"[{now_str}] ", self.tag_time)
+        file_label = self.current_filepath if self.current_filepath else "script.js"
+        self.console_buffer.insert_with_tags(end_iter, f"[NODE] Executing {file_label} with Node.js v26.10.0...\n\n", self.tag_info)
+
+        def run_thread():
+            start_time = time.time()
+            try:
+                proc = subprocess.Popen(
+                    ["node", "-e", code],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True
+                )
+                stdout, stderr = proc.communicate(timeout=10)
+                elapsed = int((time.time() - start_time) * 1000)
+
+                def update_ui():
+                    iter_end = self.console_buffer.get_end_iter()
+                    if stdout:
+                        self.console_buffer.insert_with_tags(iter_end, stdout, self.tag_log)
+                    if stderr:
+                        iter_end = self.console_buffer.get_end_iter()
+                        self.console_buffer.insert_with_tags(iter_end, stderr, self.tag_error)
+                    iter_end = self.console_buffer.get_end_iter()
+                    t_str = datetime.now().strftime("%H:%M:%S")
+                    if proc.returncode == 0:
+                        self.console_buffer.insert_with_tags(
+                            iter_end,
+                            f"\n[{t_str}] [NODE] Process finished successfully (exit code 0) in {elapsed}ms\n",
+                            self.tag_info
+                        )
+                        self.exec_status_lbl.set_markup(f"<span foreground='#22c55e'>● Node.js executed in {elapsed}ms</span>")
+                    else:
+                        self.console_buffer.insert_with_tags(
+                            iter_end,
+                            f"\n[{t_str}] [NODE] Process exited with error code {proc.returncode}\n",
+                            self.tag_error
+                        )
+                        self.exec_status_lbl.set_markup(f"<span foreground='#ef4444'>● Node.js error (code {proc.returncode})</span>")
+                    self.console_view.scroll_to_iter(self.console_buffer.get_end_iter(), 0.0, False, 0.0, 0.0)
+
+                GLib.idle_add(update_ui)
+            except subprocess.TimeoutExpired:
+                def update_timeout():
+                    iter_end = self.console_buffer.get_end_iter()
+                    self.console_buffer.insert_with_tags(iter_end, "\n[ERROR] Execution timed out after 10 seconds.\n", self.tag_error)
+                    self.exec_status_lbl.set_markup("<span foreground='#ef4444'>● Execution timed out</span>")
+                GLib.idle_add(update_timeout)
+            except Exception as e:
+                def update_err():
+                    iter_end = self.console_buffer.get_end_iter()
+                    self.console_buffer.insert_with_tags(iter_end, f"\n[ERROR] Failed to run Node: {e}\n", self.tag_error)
+                GLib.idle_add(update_err)
+
+        threading.Thread(target=run_thread, daemon=True).start()
+
+    def load_lab_file(self, prog, file_item):
+        """Loads a program file from the Lab Exam PDF into the editor with language detection."""
+        self.set_editor_text(file_item["code"])
+        self.current_filepath = file_item["name"]
+        self.is_modified = False
+
+        if HAS_GTKSOURCE:
+            lang_map = {
+                "html": "html",
+                "javascript": "js",
+                "js": "js",
+                "java": "java",
+                "xml": "xml",
+                "dtd": "xml",
+                "css": "css"
+            }
+            lang_id = lang_map.get(file_item.get("language", "html"), "html")
+            lm = GtkSource.LanguageManager.get_default()
+            lang = lm.get_language(lang_id)
+            if lang:
+                self.editor_buffer.set_language(lang)
+
+        # Update Header and Status
+        self.header.props.subtitle = f"P{prog['number']:02d}: {file_item['name']}"
+        self.lbl_filename.set_text(f"P{prog['number']:02d}: {file_item['name']}")
+
+        instruction = prog.get("instruction", "")
+        if instruction:
+            first_line = instruction.split("\n")[0].strip()
+            self.exec_status_lbl.set_text(first_line[:60])
+        else:
+            self.exec_status_lbl.set_text("Loaded from Lab PDF")
+
+        # If it's a Node.js file, open the console so output is visible
+        if file_item.get("language") in ("javascript", "js") or file_item["name"].endswith(".js"):
+            self.btn_console.set_active(True)
 
     def autosave(self):
         try:

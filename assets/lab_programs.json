@@ -1,0 +1,564 @@
+[
+  {
+    "number": 1,
+    "title": "Design the timetable using HTML Tables",
+    "unit": "1. HTML",
+    "files": [
+      {
+        "name": "timetable.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <h2>Class Timetable</h2>\n    <table border=\"1\">\n        <tr>\n            <th>Time</th>\n            <th>Mon</th>\n            <th>Tue</th>\n            <th>Wed</th>\n        </tr>\n        <tr>\n            <td>9-11</td>\n            <td>HTML</td>\n            <td>Java</td>\n            <td>Maths</td>\n        </tr>\n        <tr>\n            <td>11-1</td>\n            <td>DBMS</td>\n            <td>C</td>\n            <td>HTML</td>\n        </tr>\n        <tr>\n            <td>1-2</td>\n            <td>Lunch</td>\n            <td>Lunch</td>\n            <td>Lunch</td>\n        </tr>\n        <tr>\n            <td>2-4</td>\n            <td>Lab</td>\n            <td>Sports</td>\n            <td>Library</td>\n        </tr>\n    </table>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 2,
+    "title": "Design Pizza order form using HTML Forms",
+    "unit": "1. HTML",
+    "files": [
+      {
+        "name": "pizza.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <h2>Pizza Order Form</h2>\n    <form>\n        Name: <input type=\"text\"><br><br>\n        Phone: <input type=\"text\"><br><br>\n        Size:\n        <input type=\"radio\" name=\"size\">Small\n        <input type=\"radio\" name=\"size\">Medium\n        <input type=\"radio\" name=\"size\">Large<br><br>\n        Toppings:\n        <input type=\"checkbox\">Cheese\n        <input type=\"checkbox\">Onion\n        <input type=\"checkbox\">Corn<br><br>\n        Address:<br>\n        <textarea rows=\"3\" cols=\"30\"></textarea><br><br>\n        <input type=\"submit\" value=\"Order\">\n        <input type=\"reset\">\n    </form>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 3,
+    "title": "Apply superscript and subscript tags on ax\u00b2+bx+c=log\u2082. Also apply font tags on your introduction paragraph",
+    "unit": "1. HTML",
+    "files": [
+      {
+        "name": "equation.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <p>ax<sup>2</sup> + bx + c = log<sub>2</sub></p>\n    <p>\n        <font face=\"Arial\" size=\"5\" color=\"blue\">\n            Hello, I am a CSE student of MGIT.\n        </font>\n    </p>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 4,
+    "title": "Frames: two rows 20% / 80%. Logo in 20%. Split 80% into two equal columns: left = links, right = college introduction",
+    "unit": "1. HTML",
+    "files": [
+      {
+        "name": "main.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<frameset rows=\"20%,80%\">\n    <frame src=\"logo.html\">\n    <frameset cols=\"50%,50%\">\n        <frame src=\"links.html\">\n        <frame src=\"intro.html\" name=\"right\">\n    </frameset>\n</frameset>\n</html>"
+      },
+      {
+        "name": "logo.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <img src=\"logo.png\" height=\"80\">\n</body>\n</html>"
+      },
+      {
+        "name": "links.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <a href=\"intro.html\" target=\"right\">Home</a><br>\n    <a href=\"#\">Courses</a><br>\n    <a href=\"#\">Contact</a>\n</body>\n</html>"
+      },
+      {
+        "name": "intro.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <h2>MGIT</h2>\n    <p>\n        Mahatma Gandhi Institute of Technology is an\n        engineering college in Hyderabad.\n    </p>\n</body>\n</html>"
+      }
+    ],
+    "instruction": "Note: Keep all 4 files and logo.png in the same folder, then open main.html."
+  },
+  {
+    "number": 5,
+    "title": "Different types of Lists in HTML",
+    "unit": "1. HTML",
+    "files": [
+      {
+        "name": "lists.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <h3>Ordered List</h3>\n    <ol>\n        <li>HTML</li>\n        <li>CSS</li>\n    </ol>\n\n\n    <h3>Unordered List</h3>\n    <ul>\n        <li>Java</li>\n        <li>Python</li>\n    </ul>\n\n\n    <h3>Description List</h3>\n    <dl>\n        <dt>HTML</dt>\n        <dd>HyperText Markup Language</dd>\n    </dl>\n\n\n    <h3>Nested List</h3>\n    <ul>\n        <li>MGIT\n            <ol>\n                <li>CSE\n                    <ul>\n                        <li>B.Tech</li>\n                    </ul>\n                </li>\n            </ol>\n        </li>\n    </ul>\n</body>\n</html>\n\n\n2. Bootstrap"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 6,
+    "title": "Display the different types of alerts",
+    "unit": "2. Bootstrap",
+    "files": [
+      {
+        "name": "alerts.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<head>\n    <link rel=\"stylesheet\"\n        href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\">\n</head>\n<body class=\"container\">\n    <h2>Bootstrap Alerts</h2>\n    <div class=\"alert alert-primary\">Primary</div>\n    <div class=\"alert alert-secondary\">Secondary</div>\n    <div class=\"alert alert-success\">Success</div>\n    <div class=\"alert alert-danger\">Danger</div>\n    <div class=\"alert alert-warning\">Warning</div>\n    <div class=\"alert alert-info\">Info</div>\n    <div class=\"alert alert-light\">Light</div>\n    <div class=\"alert alert-dark\">Dark</div>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 7,
+    "title": "Display Bootstrap Grid system with different spans",
+    "unit": "2. Bootstrap",
+    "files": [
+      {
+        "name": "grid.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<head>\n    <link rel=\"stylesheet\"\n        href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\">\n</head>\n<body class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n        <div class=\"col-1 border\">1</div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-4 border\">4</div>\n        <div class=\"col-4 border\">4</div>\n        <div class=\"col-4 border\">4</div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-4 border\">4</div>\n        <div class=\"col-8 border\">8</div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-6 border\">6</div>\n        <div class=\"col-6 border\">6</div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-12 border\">12</div>\n    </div>\n</body>\n</html>"
+      }
+    ],
+    "instruction": "Note: Every row adds up to 12 columns."
+  },
+  {
+    "number": 8,
+    "title": "Design Catalogue page using Bootstrap Tables",
+    "unit": "2. Bootstrap",
+    "files": [
+      {
+        "name": "catalogue.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<head>\n    <link rel=\"stylesheet\"\n        href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\">\n</head>\n<body class=\"container\">\n    <h2>Book Catalogue</h2>\n    <table class=\"table table-bordered table-striped table-hover\">\n        <tr>\n            <th>Book</th>\n            <th>Author</th>\n            <th>Price</th>\n        </tr>\n        <tr>\n            <td>Java</td>\n            <td>Herbert</td>\n            <td>500</td>\n        </tr>\n        <tr>\n            <td>Python</td>\n            <td>Guido</td>\n            <td>400</td>\n        </tr>\n        <tr>\n            <td>C</td>\n            <td>Dennis</td>\n            <td>300</td>\n        </tr>\n    </table>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 9,
+    "title": "Design a picture grid using Bootstrap images",
+    "unit": "2. Bootstrap",
+    "files": [
+      {
+        "name": "pictures.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<head>\n    <link rel=\"stylesheet\"\n        href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\">\n</head>\n<body class=\"container\">\n    <h2>Picture Grid</h2>\n    <div class=\"row\">\n        <div class=\"col-4\"><img src=\"1.jpg\" class=\"img-fluid rounded\"></div>\n        <div class=\"col-4\"><img src=\"2.jpg\" class=\"img-fluid img-thumbnail\"></div>\n        <div class=\"col-4\"><img src=\"3.jpg\" class=\"img-fluid rounded-circle\"></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-4\"><img src=\"4.jpg\" class=\"img-fluid rounded\"></div>\n        <div class=\"col-4\"><img src=\"5.jpg\" class=\"img-fluid img-thumbnail\"></div>\n        <div class=\"col-4\"><img src=\"6.jpg\" class=\"img-fluid rounded-circle\"></div>\n    </div>\n</body>\n</html>\n\n\n3. JavaScript"
+      }
+    ],
+    "instruction": "Note: Put 1.jpg \u2026 6.jpg in the same folder."
+  },
+  {
+    "number": 10,
+    "title": "Display different types of output functions using switch case",
+    "unit": "3. JavaScript",
+    "files": [
+      {
+        "name": "output.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <p id=\"demo\"></p>\n    <script>\n        let ch = prompt(\"1 OR 2 OR 3 OR 4\");\n        switch (ch) {\n            case \"1\": \n                console.log(\"You chose 1\"); \n                break;\n            case \"2\": \n                console.log(\"You chose 2\"); \n                break;\n            case \"3\": \n                console.log(\"You chose 3\"); \n                break;\n            case \"4\": \n                console.log(\"You chose 4\"); \n                break;\n            default: \n                alert(\"Invalid choice\");\n        }\n    </script>\n</body>\n</html>"
+      }
+    ],
+    "instruction": "Note: For choice 1, see the output in Console (F12)."
+  },
+  {
+    "number": 11,
+    "title": "Arithmetic operations using switch case (use prompt)",
+    "unit": "3. JavaScript",
+    "files": [
+      {
+        "name": "arithmetic.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        let a = Number(prompt(\"Enter first number\"));\n        let b = Number(prompt(\"Enter second number\"));\n        let op = prompt(\"Enter operator + - * / %\");\n        switch (op) {\n            case \"+\": \n                document.write(\"Sum = \" + (a + b)); \n                break;\n            case \"-\": \n                document.write(\"Difference = \" + (a - b)); \n                break;\n            case \"*\": \n                document.write(\"Product = \" + (a * b)); \n                break;\n            case \"/\": \n                document.write(\"Quotient = \" + (a / b)); \n                break;\n            case \"%\": \n                document.write(\"Remainder = \" + (a % b)); \n                break;\n            default: \n                document.write(\"Invalid operator\");\n        }\n    </script>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 12,
+    "title": "Convert temperature from Celsius to Fahrenheit using functions",
+    "unit": "3. JavaScript",
+    "files": [
+      {
+        "name": "temperature.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        function toF(c) {\n            return c * 9 / 5 + 32;\n        }\n        let c = Number(prompt(\"Enter temperature in Celsius\"));\n        document.write(c + \" \u00b0C = \" + toF(c) + \" \u00b0F\");\n    </script>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 13,
+    "title": "Design a number guess game",
+    "unit": "3. JavaScript",
+    "files": [
+      {
+        "name": "guess.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        let num = Math.floor(Math.random() * 10) + 1;\n        let guess, count = 0;\n        do {\n            guess = Number(prompt(\"Guess a number between 1 and 10\"));\n            count++;\n            if (guess > num) alert(\"Too high\");\n            else if (guess < num) alert(\"Too low\");\n        } while (guess != num);\n        document.write(\"Correct! The number was \" + num + \". Tries: \" + count);\n    </script>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 14,
+    "title": "Display the traffic light based on input (start, stop, ready)",
+    "unit": "3. JavaScript",
+    "files": [
+      {
+        "name": "traffic.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <div id=\"light\"\n        style=\"width:100px; height:100px; border-radius:50%; background:gray\">\n    </div>6\n    <script>\n        let input = prompt(\"Enter start / stop / ready\");\n        let color;\n        switch (input) {\n            case \"start\": color = \"green\"; break;\n            case \"stop\": color = \"red\"; break;\n            case \"ready\": color = \"yellow\"; break;\n            default: color = \"gray\"; alert(\"Invalid input\");\n        }\n        document.getElementById(\"light\").style.background = color;\n    </script>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 15,
+    "title": "Display arrays, objects, date, math, number, strings using switch case",
+    "unit": "3. JavaScript",
+    "files": [
+      {
+        "name": "objects.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        let ch = prompt(\"1.Array 2.Object 3.Date 4.Math 5.Number 6.String\");\n        switch (ch) {\n            case \"1\":\n                let arr = [\"C\", \"Java\", \"Python\"];\n                arr.push(\"JS\");\n                document.write(\"Array: \" + arr + \"<br>\");\n                break;\n            case \"2\":\n                let stu = { name: \"Ravi\", age: 20 };\n                document.write(\"Object: \" + stu.name + \", \" + stu.age);\n                break;\n            case \"3\":\n                let d = new Date();\n                document.write(d);\n                break;\n            case \"4\":\n                document.write(\"sqrt(16) = \" + Math.sqrt(16) + \"<br>\");\n                break;\n            case \"5\":\n                document.write(\"parseInt = \" + parseInt(\"25\"));\n                break;\n            case \"6\":\n                let s = \"Hello MGIT\";\n                document.write(\"Length: \" + s.length);\n                break;\n            default:\n                document.write(\"Invalid choice\");\n        }\n    </script>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 16,
+    "title": "Class and object constructor",
+    "unit": "3. JavaScript",
+    "files": [
+      {
+        "name": "constructor.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        function Car(name, year) {\n            this.name = name;\n            this.year = year;\n        }\n        let c1 = new Car(\"BMW\", 2024);\n        document.write(\"Car: \" + c1.name + \" \" + c1.year + \"<br>\");\n\n\n        class Student {\n            constructor(name, roll) {\n                this.name = name;\n                this.roll = roll;\n            }\n            show() {\n                document.write(\"Student: \" + this.name + \" \" + this.roll);\n            }\n        }\n        let s1 = new Student(\"Ravi\", 101);\n        s1.show();\n    </script>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 17,
+    "title": "Any three Regular Expression programs",
+    "unit": "3. JavaScript",
+    "files": [
+      {
+        "name": "regex1.html",
+        "description": "test(): check mobile number",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        let mobile = prompt(\"Enter mobile number\");\n        if (/^\\d{10}$/.test(mobile)) document.write(\"Valid mobile number\");\n        else document.write(\"Invalid mobile number\");\n    </script>\n</body>\n</html>"
+      },
+      {
+        "name": "regex2.html",
+        "description": "match(): find all numbers in a string",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        let text = \"MGIT has 12 blocks and 5000 students\";\n        document.write(text.match(/\\d+/g));\n    </script>\n</body>\n</html>"
+      },
+      {
+        "name": "regex3.html",
+        "description": "replace(): replace a word (g = all, i = ignore case)",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        let text = \"I like Java. java is easy.\";\n        document.write(text.replace(/java/gi, \"JavaScript\"));\n    </script>\n</body>\n</html>\n\n\n4. JS Validation (Registration + Login)"
+      }
+    ],
+    "instruction": "Note: ^ start, $ end, \\d digit, {10} exactly 10, + one or more, g global, i ignore case."
+  },
+  {
+    "number": 18,
+    "title": "Registration + Login validation.",
+    "unit": "4. JS Validation",
+    "files": [
+      {
+        "name": "register.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <h2>Registration</h2>\n    <form onsubmit=\"return validate()\">\n        Username: <input id=\"username\"><br><br>\n        Password: <input type=\"password\" id=\"password\"><br><br>\n        Mobile: <input id=\"mobile\"><br><br>\n        Email: <input id=\"email\" type=\"email\"><br><br>\n        DOB: <input type=\"date\" id=\"dob\"><br><br>\n        Gender:\n        <input type=\"radio\" id=\"male\" name=\"gender\">Male\n        <input type=\"radio\" id=\"female\" name=\"gender\">Female<br><br>\n        <input type=\"checkbox\" id=\"terms\">I accept terms<br><br>\n        <input type=\"submit\" value=\"Register\">\n    </form>\n\n\n    <script>\n        function validate() {\n            if (!/^.{6,}$/.test(username.value)) {\n                alert(\"Username: minimum 6 characters\");\n                return false;\n            }\n            if (!/^.{8,}$/.test(password.value)) {\n                alert(\"Password: minimum 8 characters\");\n                return false;\n            }\n            if (!/^\\d{10}$/.test(mobile.value)) {\n                alert(\"Mobile: 10 digits only\");\n                return false;\n            }\n            if (!/^\\S+@\\S+\\.\\S+$/.test(email.value)) {\n                alert(\"Enter a valid email\");\n                return false;\n            }\n            if (!male.checked && !female.checked) {\n                alert(\"Select gender\");\n                return false;\n            }\n            if (!terms.checked) {\n                alert(\"Accept the terms\");\n                return false;\n            }\n            alert(\"Thank you for registration\");\n            return false;\n        }\n    </script>\n</body>\n</html>\n5. XML with DTD"
+      }
+    ],
+    "instruction": "Register: username minimum 6 characters; password minimum 8 characters; mobile 10 digits; email format; DOB no validation; radio and checkbox checked \u2192 \u201cThank you for registration\u201d \u2192 login page.\nLogin: username/email + password \u2192 \u201cWelcome\u201d \u2192 dashboard"
+  },
+  {
+    "number": 19,
+    "title": "Create an XML document for a bookstore and validate it using an internal DTD",
+    "unit": "5. XML with DTD",
+    "files": [
+      {
+        "name": "book.xml",
+        "description": "",
+        "language": "xml",
+        "code": "<?xml version=\"1.0\"?>\n<!DOCTYPE bookstore [\n    <!ELEMENT bookstore (book+)>\n    <!ELEMENT book (title, author, price)>\n    <!ELEMENT title (#PCDATA)>\n    <!ELEMENT author (#PCDATA)>\n    <!ELEMENT price (#PCDATA)>\n]>\n<bookstore>\n    <book>\n        <title>Java</title>\n        <author>James</author>\n        <price>500</price>\n    </book>\n</bookstore>"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 20,
+    "title": "Same bookstore using an external DTD file",
+    "unit": "5. XML with DTD",
+    "files": [
+      {
+        "name": "bookstore.xml",
+        "description": "",
+        "language": "xml",
+        "code": "<?xml version=\"1.0\"?>\n<!DOCTYPE bookstore SYSTEM \"bookstore.dtd\">\n<bookstore>\n    <book>\n        <title>Java</title>\n        <author>James</author>\n        <price>500</price>\n    </book>\n</bookstore>"
+      },
+      {
+        "name": "bookstore.dtd",
+        "description": "",
+        "language": "xml",
+        "code": "<!ELEMENT bookstore (book+)>\n<!ELEMENT book (title, author, price)>\n<!ELEMENT title (#PCDATA)>\n<!ELEMENT author (#PCDATA)>\n<!ELEMENT price (#PCDATA)>\n\n\n6. Servlets (Generic, HTTP, Cookies, Sessions)"
+      }
+    ],
+    "instruction": "Note: + one or more, * zero or more, #PCDATA text, #REQUIRED attribute must be given. Open the .xml in a browser to see the tree. To check it against the DTD, use an online XML validator (e.g. xmlvalidation.com) or VS Code with the XML extension."
+  },
+  {
+    "number": 21,
+    "title": "Generic Servlet program to display \u201cHello Generic Servlet\u201d",
+    "unit": "6. Servlets",
+    "files": [
+      {
+        "name": "HelloGeneric.java",
+        "description": "",
+        "language": "java",
+        "code": "import java.io.*;\nimport javax.servlet.*;\n\n\npublic class HelloGeneric extends GenericServlet {\n    public void service(ServletRequest req, ServletResponse res)\n            throws IOException {\n        res.setContentType(\"text/html\");\n        res.getWriter().println(\"<h1>Hello Generic Servlet</h1>\");\n    }\n}"
+      },
+      {
+        "name": "web.xml",
+        "description": "",
+        "language": "xml",
+        "code": "<web-app>\n    <servlet>\n        <servlet-name>g</servlet-name>\n        <servlet-class>HelloGeneric</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>g</servlet-name>\n        <url-pattern>/hello</url-pattern>\n    </servlet-mapping>\n</web-app>\n\n\nSteps"
+      }
+    ],
+    "instruction": "1. Folder: C:\\xampp\\tomcat\\webapps\\Generic\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Generic/hello"
+  },
+  {
+    "number": 22,
+    "title": "HTTP Servlet program to display \u201cHello HTTP Servlet\u201d",
+    "unit": "6. Servlets",
+    "files": [
+      {
+        "name": "HelloHttp.java",
+        "description": "",
+        "language": "java",
+        "code": "import java.io.*;\nimport javax.servlet.http.*;\n\n\npublic class HelloHttp extends HttpServlet {\n    public void doGet(HttpServletRequest req, HttpServletResponse res)\n            throws IOException {\n        res.setContentType(\"text/html\");\n        res.getWriter().println(\"<h1>Hello HTTP Servlet</h1>\");\n    }\n}"
+      },
+      {
+        "name": "web.xml",
+        "description": "",
+        "language": "xml",
+        "code": "<web-app>\n    <servlet>\n        <servlet-name>h</servlet-name>\n        <servlet-class>HelloHttp</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>h</servlet-name>\n        <url-pattern>/hello</url-pattern>\n    </servlet-mapping>\n</web-app>\n\n\nSteps"
+      }
+    ],
+    "instruction": "1. Folder: C:\\xampp\\tomcat\\webapps\\Http\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Http/hello"
+  },
+  {
+    "number": 23,
+    "title": "Write a Servlet to write and retrieve cookies",
+    "unit": "6. Servlets",
+    "files": [
+      {
+        "name": "CookieDemo.java",
+        "description": "",
+        "language": "java",
+        "code": "import java.io.*;\nimport javax.servlet.http.*;\n\n\npublic class CookieDemo extends HttpServlet {\n    public void doGet(HttpServletRequest req, HttpServletResponse res)\n            throws IOException {\n        res.setContentType(\"text/html\");\n        PrintWriter out = res.getWriter();\n\n\n        Cookie c = new Cookie(\"user\", \"MGIT\");\n        res.addCookie(c);\n        out.println(\"Cookie created<br>\");\n\n\n        Cookie[] cs = req.getCookies();\n        if (cs != null) {\n            for (Cookie x : cs) {\n                out.println(x);\n            }\n        }\n    }\n}"
+      },
+      {
+        "name": "web.xml",
+        "description": "",
+        "language": "xml",
+        "code": "<web-app>\n    <servlet>\n        <servlet-name>c</servlet-name>\n        <servlet-class>CookieDemo</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>c</servlet-name>\n        <url-pattern>/cookie</url-pattern>\n    </servlet-mapping>\n</web-app>\n\n\nSteps"
+      }
+    ],
+    "instruction": "1. Folder: C:\\xampp\\tomcat\\webapps\\Cookie\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Cookie/cookie, then refresh the page to see the stored cookie"
+  },
+  {
+    "number": 24,
+    "title": "Write a Servlet to implement HTTP Sessions",
+    "unit": "6. Servlets",
+    "files": [
+      {
+        "name": "SessionDemo.java",
+        "description": "",
+        "language": "java",
+        "code": "import java.io.*;\nimport javax.servlet.http.*;\n\n\npublic class SessionDemo extends HttpServlet {\n    public void doGet(HttpServletRequest req, HttpServletResponse res)\n            throws IOException {\n        res.setContentType(\"text/html\");\n        PrintWriter out = res.getWriter();\n\n\n        HttpSession s = req.getSession();\n        s.setAttribute(\"user\", \"MGIT\");\n        out.println(\"Session created<br>\");\n        out.println(\"Session ID: \" + s.getId() + \"<br>\");\n        out.println(\"Welcome \" + s.getAttribute(\"user\"));\n    }\n}"
+      },
+      {
+        "name": "web.xml",
+        "description": "",
+        "language": "xml",
+        "code": "<web-app>\n    <servlet>\n        <servlet-name>s</servlet-name>\n        <servlet-class>SessionDemo</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>s</servlet-name>\n        <url-pattern>/session</url-pattern>\n    </servlet-mapping>\n</web-app>\n\n\nSteps\n7. Weather App (ES6)"
+      }
+    ],
+    "instruction": "1. Folder: C:\\xampp\\tomcat\\webapps\\Session\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Session/session"
+  },
+  {
+    "number": 25,
+    "title": "Explore ES6 features and implement a weather app using OpenWeatherMap to display temperature and weather description",
+    "unit": "7. Weather App",
+    "files": [
+      {
+        "name": "weather1.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <input id=\"city\" placeholder=\"Enter city\">\n    <button onclick=\"getWeather()\">Get Weather</button>\n    <p id=\"out\"></p>\n\n\n    <script>\n        const key = \"YOUR_API_KEY\";\n        const url = \"https://api.openweathermap.org/data/2.5/weather\";\n\n\n        const getWeather = async () => {\n            let city = document.getElementById(\"city\").value;\n            let res = await fetch(`${url}?q=${city}&appid=${key}`);\n            let data = await res.json();\n            document.getElementById(\"out\").innerHTML = `\n                City: ${city} <br>\n                Temperature: ${data.main.temp} Kelvin <br>\n                Description: ${data.weather[0].description}\n            `;\n        };\n    </script>\n</body>\n</html>\n\n\n8. JDBC: DDL and CRUD"
+      }
+    ],
+    "instruction": "Note: ES6 used: const/let, arrow function, async/await, template literals (`${}`). Get a free API key: sign up at openweathermap.org \u2192 My API keys, and paste it in place of YOUR_API_KEY."
+  },
+  {
+    "number": 26,
+    "title": "Write a Java program to apply all DDL commands on a database",
+    "unit": "8. JDBC",
+    "files": [
+      {
+        "name": "DDL.java",
+        "description": "",
+        "language": "java",
+        "code": "import java.sql.*;\n\n\npublic class DDL {\n    public static void main(String[] args) throws Exception {\n        String url = \"jdbc:mysql://localhost:3306/studentdb\";\n        Connection con = DriverManager.getConnection(url, \"root\", \"\");\n        Statement st = con.createStatement();\n\n\n        st.executeUpdate(\"CREATE TABLE student(id INT, name VARCHAR(20))\");\n        System.out.println(\"Table created\");\n\n\n        st.executeUpdate(\"ALTER TABLE student ADD age INT\");\n        System.out.println(\"Table altered\");\n\n\n        st.executeUpdate(\"RENAME TABLE student TO stud\");\n        System.out.println(\"Table renamed\");\n\n\n        st.executeUpdate(\"TRUNCATE TABLE stud\");\n        System.out.println(\"Table truncated\");\n\n\n        st.executeUpdate(\"DROP TABLE stud\");\n        System.out.println(\"Table dropped\");\n\n\n        con.close();\n    }\n}\n\n\nSteps"
+      }
+    ],
+    "instruction": "1. In MySQL: CREATE DATABASE studentdb;\n1. Put mysql-connector-j.jar in the same folder as the .java file\n1. Compile: javac DDL.java\n1. Run: java -cp \".;mysql-connector-j.jar\" DDL\n1. Use your own MySQL password in place of \"\""
+  },
+  {
+    "number": 27,
+    "title": "Java program to perform CRUD operations (Create, Read, Update, Delete)",
+    "unit": "8. JDBC",
+    "files": [
+      {
+        "name": "CRUD.java",
+        "description": "",
+        "language": "java",
+        "code": "import java.sql.*;\n\n\npublic class CRUD {\n    public static void main(String[] args) throws Exception {\n        String url = \"jdbc:mysql://localhost:3306/studentdb\";\n        Connection con = DriverManager.getConnection(url, \"root\", \"\");\n        Statement st = con.createStatement();\n        st.executeUpdate(\"CREATE TABLE IF NOT EXISTS student(id INT, name VARCHAR(20))\");\n\n\n        st.executeUpdate(\"INSERT INTO student VALUES(1, 'Ravi'), (2, 'Teja')\");\n        System.out.println(\"Inserted\");\n\n\n        st.executeUpdate(\"UPDATE student SET name = 'Kiran' WHERE id = 1\");\n        System.out.println(\"Updated\");\n\n\n        st.executeUpdate(\"DELETE FROM student WHERE id = 2\");\n        System.out.println(\"Deleted\");\n\n\n        ResultSet rs = st.executeQuery(\"SELECT * FROM student\");\n        while (rs.next()) {\n            System.out.println(rs.getInt(1) + \" \" + rs.getString(2));\n        }\n\n\n        con.close();\n    }\n}\n\n\nSteps\n9. Arrow Functions, Callbacks, Promises (Node)"
+      }
+    ],
+    "instruction": "1. In MySQL: CREATE DATABASE studentdb;\n1. Put mysql-connector-j.jar in the same folder as the .java file\n1. Compile: javac CRUD.java\n1. Run: java -cp \".;mysql-connector-j.jar\" CRUD\n1. Use your own MySQL password in place of \"\""
+  },
+  {
+    "number": 28,
+    "title": "Arrow functions",
+    "unit": "9. Node.js",
+    "files": [
+      {
+        "name": "arrow1.js",
+        "description": "add two numbers",
+        "language": "javascript",
+        "code": "const add = (a, b) => a + b;\nconsole.log(add(5, 3));"
+      },
+      {
+        "name": "arrow2.js",
+        "description": "square of a number",
+        "language": "javascript",
+        "code": "const square = n => n * n;\nconsole.log(square(4));"
+      },
+      {
+        "name": "arrow3.js",
+        "description": "even or odd",
+        "language": "javascript",
+        "code": "const evenOdd = n => (n % 2 == 0 ? \"Even\" : \"Odd\");\nconsole.log(evenOdd(7));"
+      },
+      {
+        "name": "arrow4.js",
+        "description": "max of two numbers",
+        "language": "javascript",
+        "code": "const max = (a, b) => (a > b ? a : b);\nconsole.log(max(6, 9));\n\n\nSteps"
+      }
+    ],
+    "instruction": "1. Install Node.js, keep all files in one folder\n1. Open cmd there \u2192 node arrow1.js (same for every file)"
+  },
+  {
+    "number": 29,
+    "title": "Callbacks",
+    "unit": "9. Node.js",
+    "files": [
+      {
+        "name": "callback1.js",
+        "description": "sum using a callback",
+        "language": "javascript",
+        "code": "function show(result) {\n    console.log(\"Sum = \" + result);\n}\n\n\nfunction add(a, b, callback) {\n    callback(a + b);\n}\n\n\nadd(5, 3, show);"
+      },
+      {
+        "name": "callback2.js",
+        "description": "even or odd",
+        "language": "javascript",
+        "code": "function check(n, callback) {\n    callback(n % 2 == 0 ? \"Even\" : \"Odd\");\n}\n\n\ncheck(10, msg => console.log(msg));"
+      },
+      {
+        "name": "callback3.js",
+        "description": "login then dashboard",
+        "language": "javascript",
+        "code": "function dashboard() {\n    console.log(\"Welcome to dashboard\");\n}\n\n\nfunction login(user, callback) {\n    console.log(\"Logged in as \" + user);\n    callback();\n}\n\n\nlogin(\"Ravi\", dashboard);"
+      },
+      {
+        "name": "callback4.js",
+        "description": "setTimeout callback",
+        "language": "javascript",
+        "code": "console.log(\"Start\");\nsetTimeout(() => console.log(\"Printed after 2 seconds\"), 2000);\nconsole.log(\"End\");"
+      }
+    ],
+    "instruction": "Note: A callback is a function passed to another function and called later."
+  },
+  {
+    "number": 30,
+    "title": "Promises",
+    "unit": "9. Node.js",
+    "files": [
+      {
+        "name": "promise1.js",
+        "description": "even or odd",
+        "language": "javascript",
+        "code": "function check(n) {\n    return new Promise((resolve, reject) => {\n        if (n % 2 == 0) resolve(\"Even\");\n        else reject(\"Odd\");\n    });\n}\n\n\ncheck(10)\n    .then(msg => console.log(msg))\n    .catch(err => console.log(err));"
+      },
+      {
+        "name": "promise2.js",
+        "description": "login system",
+        "language": "javascript",
+        "code": "function login(user) {\n    return new Promise((resolve, reject) => {\n        if (user == \"admin\") resolve(\"Login success\");\n        else reject(\"Login failed\");\n    });\n}\n\n\nlogin(\"admin\")\n    .then(msg => console.log(msg))\n    .catch(err => console.log(err));"
+      },
+      {
+        "name": "promise3.js",
+        "description": "same as promise1 using async/await",
+        "language": "javascript",
+        "code": "function check(n) {\n    return new Promise((resolve, reject) => {\n        if (n % 2 == 0) resolve(\"Even\");\n        else reject(\"Odd\");\n    });\n}\n\n\nasync function run() {\n    try {\n        console.log(await check(7));\n    } catch (err) {\n        console.log(err);\n    }\n}\n\n\nrun();\n\n\n10. Extra: CSS"
+      }
+    ],
+    "instruction": "Note: resolve \u2192 goes to .then(); reject \u2192 goes to .catch()."
+  },
+  {
+    "number": 31,
+    "title": "Types of CSS (inline, internal, external) with selectors and hover",
+    "unit": "10. Extra: CSS",
+    "files": [
+      {
+        "name": "index.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <style>\n        h1 { color: blue; }\n        .box { border: 2px solid black; padding: 10px; margin: 10px; }\n        #note { background: yellow; }\n        button:hover { background: green; color: white; }\n    </style>\n</head>\n<body>\n    <h1>Internal CSS (element selector)</h1>\n    <p style=\"color: red;\">Inline CSS</p>\n    <p class=\"ext\">External CSS</p>\n    <div class=\"box\">Class selector + box model</div>\n    <p id=\"note\">ID selector</p>\n    <button>Hover me</button>\n</body>\n</html>"
+      },
+      {
+        "name": "style.css",
+        "description": "",
+        "language": "css",
+        "code": ".ext {\n    color: purple;\n    font-size: 20px;\n}"
+      }
+    ],
+    "instruction": ""
+  },
+  {
+    "number": 32,
+    "title": "Student results table with CSS: highlight topper, colour failed result, alternate rows, hover row",
+    "unit": "10. Extra: CSS",
+    "files": [
+      {
+        "name": "results.html",
+        "description": "",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        table { border-collapse: collapse; }\n        th, td { border: 1px solid black; padding: 8px; }\n        th { background: navy; color: white; }\n        tr:nth-child(even) { background: #eee; }\n        tr:hover { background: lightblue; }\n        .top { background: lightgreen; }\n        .fail { color: red; }\n    </style>\n</head>\n<body>\n    <table>\n        <tr>\n            <th>Name</th>\n            <th>Marks</th>\n            <th>Result</th>\n        </tr>\n        <tr class=\"top\">\n            <td>Ravi</td>\n            <td>95</td>\n            <td>Pass</td>\n        </tr>\n        <tr>\n            <td>Teja</td>\n            <td>72</td>\n            <td>Pass</td>\n        </tr>\n        <tr>\n            <td>Kiran</td>\n            <td>30</td>\n            <td class=\"fail\">Fail</td>\n        </tr>\n    </table>\n</body>\n</html>"
+      }
+    ],
+    "instruction": ""
+  }
+]

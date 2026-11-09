@@ -1,0 +1,1091 @@
+﻿Node JS Lab Exam Programs
+Mid 1 + Mid 2 programs, short and easy to memorise.
+1. HTML
+1. Design the timetable using HTML Tables
+timetable.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <h2>Class Timetable</h2>
+    <table border="1">
+        <tr>
+            <th>Time</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+        </tr>
+        <tr>
+            <td>9-11</td>
+            <td>HTML</td>
+            <td>Java</td>
+            <td>Maths</td>
+        </tr>
+        <tr>
+            <td>11-1</td>
+            <td>DBMS</td>
+            <td>C</td>
+            <td>HTML</td>
+        </tr>
+        <tr>
+            <td>1-2</td>
+            <td>Lunch</td>
+            <td>Lunch</td>
+            <td>Lunch</td>
+        </tr>
+        <tr>
+            <td>2-4</td>
+            <td>Lab</td>
+            <td>Sports</td>
+            <td>Library</td>
+        </tr>
+    </table>
+</body>
+</html>
+	2. Design Pizza order form using HTML Forms
+pizza.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <h2>Pizza Order Form</h2>
+    <form>
+        Name: <input type="text"><br><br>
+        Phone: <input type="text"><br><br>
+        Size:
+        <input type="radio" name="size">Small
+        <input type="radio" name="size">Medium
+        <input type="radio" name="size">Large<br><br>
+        Toppings:
+        <input type="checkbox">Cheese
+        <input type="checkbox">Onion
+        <input type="checkbox">Corn<br><br>
+        Address:<br>
+        <textarea rows="3" cols="30"></textarea><br><br>
+        <input type="submit" value="Order">
+        <input type="reset">
+    </form>
+</body>
+</html>
+	3. Apply superscript and subscript tags on ax²+bx+c=log₂. Also apply font tags on your introduction paragraph
+equation.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <p>ax<sup>2</sup> + bx + c = log<sub>2</sub></p>
+    <p>
+        <font face="Arial" size="5" color="blue">
+            Hello, I am a CSE student of MGIT.
+        </font>
+    </p>
+</body>
+</html>
+	4. Frames: two rows 20% / 80%. Logo in 20%. Split 80% into two equal columns: left = links, right = college introduction
+main.html
+	<!DOCTYPE html>
+<html>
+<frameset rows="20%,80%">
+    <frame src="logo.html">
+    <frameset cols="50%,50%">
+        <frame src="links.html">
+        <frame src="intro.html" name="right">
+    </frameset>
+</frameset>
+</html>
+	
+
+logo.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <img src="logo.png" height="80">
+</body>
+</html>
+	
+
+links.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <a href="intro.html" target="right">Home</a><br>
+    <a href="#">Courses</a><br>
+    <a href="#">Contact</a>
+</body>
+</html>
+	
+
+intro.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <h2>MGIT</h2>
+    <p>
+        Mahatma Gandhi Institute of Technology is an
+        engineering college in Hyderabad.
+    </p>
+</body>
+</html>
+	
+
+Note: Keep all 4 files and logo.png in the same folder, then open main.html.
+5. Different types of Lists in HTML
+lists.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <h3>Ordered List</h3>
+    <ol>
+        <li>HTML</li>
+        <li>CSS</li>
+    </ol>
+
+
+    <h3>Unordered List</h3>
+    <ul>
+        <li>Java</li>
+        <li>Python</li>
+    </ul>
+
+
+    <h3>Description List</h3>
+    <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language</dd>
+    </dl>
+
+
+    <h3>Nested List</h3>
+    <ul>
+        <li>MGIT
+            <ol>
+                <li>CSE
+                    <ul>
+                        <li>B.Tech</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+    </ul>
+</body>
+</html>
+	
+
+2. Bootstrap
+6. Display the different types of alerts
+alerts.html
+	<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <h2>Bootstrap Alerts</h2>
+    <div class="alert alert-primary">Primary</div>
+    <div class="alert alert-secondary">Secondary</div>
+    <div class="alert alert-success">Success</div>
+    <div class="alert alert-danger">Danger</div>
+    <div class="alert alert-warning">Warning</div>
+    <div class="alert alert-info">Info</div>
+    <div class="alert alert-light">Light</div>
+    <div class="alert alert-dark">Dark</div>
+</body>
+</html>
+	
+
+7. Display Bootstrap Grid system with different spans
+grid.html
+	<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <div class="row">
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+        <div class="col-1 border">1</div>
+    </div>
+    <div class="row">
+        <div class="col-4 border">4</div>
+        <div class="col-4 border">4</div>
+        <div class="col-4 border">4</div>
+    </div>
+    <div class="row">
+        <div class="col-4 border">4</div>
+        <div class="col-8 border">8</div>
+    </div>
+    <div class="row">
+        <div class="col-6 border">6</div>
+        <div class="col-6 border">6</div>
+    </div>
+    <div class="row">
+        <div class="col-12 border">12</div>
+    </div>
+</body>
+</html>
+	
+
+Note: Every row adds up to 12 columns.
+8. Design Catalogue page using Bootstrap Tables
+catalogue.html
+	<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <h2>Book Catalogue</h2>
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Java</td>
+            <td>Herbert</td>
+            <td>500</td>
+        </tr>
+        <tr>
+            <td>Python</td>
+            <td>Guido</td>
+            <td>400</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>Dennis</td>
+            <td>300</td>
+        </tr>
+    </table>
+</body>
+</html>
+	
+
+9. Design a picture grid using Bootstrap images
+pictures.html
+	<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <h2>Picture Grid</h2>
+    <div class="row">
+        <div class="col-4"><img src="1.jpg" class="img-fluid rounded"></div>
+        <div class="col-4"><img src="2.jpg" class="img-fluid img-thumbnail"></div>
+        <div class="col-4"><img src="3.jpg" class="img-fluid rounded-circle"></div>
+    </div>
+    <div class="row">
+        <div class="col-4"><img src="4.jpg" class="img-fluid rounded"></div>
+        <div class="col-4"><img src="5.jpg" class="img-fluid img-thumbnail"></div>
+        <div class="col-4"><img src="6.jpg" class="img-fluid rounded-circle"></div>
+    </div>
+</body>
+</html>
+	
+
+Note: Put 1.jpg … 6.jpg in the same folder.
+3. JavaScript
+10. Display different types of output functions using switch case
+output.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <p id="demo"></p>
+    <script>
+        let ch = prompt("1 OR 2 OR 3 OR 4");
+        switch (ch) {
+            case "1": 
+                console.log("You chose 1"); 
+                break;
+            case "2": 
+                console.log("You chose 2"); 
+                break;
+            case "3": 
+                console.log("You chose 3"); 
+                break;
+            case "4": 
+                console.log("You chose 4"); 
+                break;
+            default: 
+                alert("Invalid choice");
+        }
+    </script>
+</body>
+</html>
+	
+
+Note: For choice 1, see the output in Console (F12).
+11. Arithmetic operations using switch case (use prompt)
+arithmetic.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        let a = Number(prompt("Enter first number"));
+        let b = Number(prompt("Enter second number"));
+        let op = prompt("Enter operator + - * / %");
+        switch (op) {
+            case "+": 
+                document.write("Sum = " + (a + b)); 
+                break;
+            case "-": 
+                document.write("Difference = " + (a - b)); 
+                break;
+            case "*": 
+                document.write("Product = " + (a * b)); 
+                break;
+            case "/": 
+                document.write("Quotient = " + (a / b)); 
+                break;
+            case "%": 
+                document.write("Remainder = " + (a % b)); 
+                break;
+            default: 
+                document.write("Invalid operator");
+        }
+    </script>
+</body>
+</html>
+	
+
+12. Convert temperature from Celsius to Fahrenheit using functions
+temperature.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        function toF(c) {
+            return c * 9 / 5 + 32;
+        }
+        let c = Number(prompt("Enter temperature in Celsius"));
+        document.write(c + " °C = " + toF(c) + " °F");
+    </script>
+</body>
+</html>
+	
+
+13. Design a number guess game
+guess.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        let num = Math.floor(Math.random() * 10) + 1;
+        let guess, count = 0;
+        do {
+            guess = Number(prompt("Guess a number between 1 and 10"));
+            count++;
+            if (guess > num) alert("Too high");
+            else if (guess < num) alert("Too low");
+        } while (guess != num);
+        document.write("Correct! The number was " + num + ". Tries: " + count);
+    </script>
+</body>
+</html>
+	
+
+14. Display the traffic light based on input (start, stop, ready)
+traffic.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <div id="light"
+        style="width:100px; height:100px; border-radius:50%; background:gray">
+    </div>6
+    <script>
+        let input = prompt("Enter start / stop / ready");
+        let color;
+        switch (input) {
+            case "start": color = "green"; break;
+            case "stop": color = "red"; break;
+            case "ready": color = "yellow"; break;
+            default: color = "gray"; alert("Invalid input");
+        }
+        document.getElementById("light").style.background = color;
+    </script>
+</body>
+</html>
+	
+
+15. Display arrays, objects, date, math, number, strings using switch case
+objects.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        let ch = prompt("1.Array 2.Object 3.Date 4.Math 5.Number 6.String");
+        switch (ch) {
+            case "1":
+                let arr = ["C", "Java", "Python"];
+                arr.push("JS");
+                document.write("Array: " + arr + "<br>");
+                break;
+            case "2":
+                let stu = { name: "Ravi", age: 20 };
+                document.write("Object: " + stu.name + ", " + stu.age);
+                break;
+            case "3":
+                let d = new Date();
+                document.write(d);
+                break;
+            case "4":
+                document.write("sqrt(16) = " + Math.sqrt(16) + "<br>");
+                break;
+            case "5":
+                document.write("parseInt = " + parseInt("25"));
+                break;
+            case "6":
+                let s = "Hello MGIT";
+                document.write("Length: " + s.length);
+                break;
+            default:
+                document.write("Invalid choice");
+        }
+    </script>
+</body>
+</html>
+	
+
+16. Class and object constructor
+constructor.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        function Car(name, year) {
+            this.name = name;
+            this.year = year;
+        }
+        let c1 = new Car("BMW", 2024);
+        document.write("Car: " + c1.name + " " + c1.year + "<br>");
+
+
+        class Student {
+            constructor(name, roll) {
+                this.name = name;
+                this.roll = roll;
+            }
+            show() {
+                document.write("Student: " + this.name + " " + this.roll);
+            }
+        }
+        let s1 = new Student("Ravi", 101);
+        s1.show();
+    </script>
+</body>
+</html>
+	
+
+17. Any three Regular Expression programs
+regex1.html — test(): check mobile number
+	<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        let mobile = prompt("Enter mobile number");
+        if (/^\d{10}$/.test(mobile)) document.write("Valid mobile number");
+        else document.write("Invalid mobile number");
+    </script>
+</body>
+</html>
+	
+
+regex2.html — match(): find all numbers in a string
+	<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        let text = "MGIT has 12 blocks and 5000 students";
+        document.write(text.match(/\d+/g));
+    </script>
+</body>
+</html>
+	
+
+regex3.html — replace(): replace a word (g = all, i = ignore case)
+	<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        let text = "I like Java. java is easy.";
+        document.write(text.replace(/java/gi, "JavaScript"));
+    </script>
+</body>
+</html>
+	
+
+Note: ^ start, $ end, \d digit, {10} exactly 10, + one or more, g global, i ignore case.
+4. JS Validation (Registration + Login)
+18. Registration + Login validation.
+Register: username minimum 6 characters; password minimum 8 characters; mobile 10 digits; email format; DOB no validation; radio and checkbox checked → “Thank you for registration” → login page.
+Login: username/email + password → “Welcome” → dashboard
+register.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <h2>Registration</h2>
+    <form onsubmit="return validate()">
+        Username: <input id="username"><br><br>
+        Password: <input type="password" id="password"><br><br>
+        Mobile: <input id="mobile"><br><br>
+        Email: <input id="email" type="email"><br><br>
+        DOB: <input type="date" id="dob"><br><br>
+        Gender:
+        <input type="radio" id="male" name="gender">Male
+        <input type="radio" id="female" name="gender">Female<br><br>
+        <input type="checkbox" id="terms">I accept terms<br><br>
+        <input type="submit" value="Register">
+    </form>
+
+
+    <script>
+        function validate() {
+            if (!/^.{6,}$/.test(username.value)) {
+                alert("Username: minimum 6 characters");
+                return false;
+            }
+            if (!/^.{8,}$/.test(password.value)) {
+                alert("Password: minimum 8 characters");
+                return false;
+            }
+            if (!/^\d{10}$/.test(mobile.value)) {
+                alert("Mobile: 10 digits only");
+                return false;
+            }
+            if (!/^\S+@\S+\.\S+$/.test(email.value)) {
+                alert("Enter a valid email");
+                return false;
+            }
+            if (!male.checked && !female.checked) {
+                alert("Select gender");
+                return false;
+            }
+            if (!terms.checked) {
+                alert("Accept the terms");
+                return false;
+            }
+            alert("Thank you for registration");
+            return false;
+        }
+    </script>
+</body>
+</html>
+	5. XML with DTD
+19. Create an XML document for a bookstore and validate it using an internal DTD
+book.xml
+	<?xml version="1.0"?>
+<!DOCTYPE bookstore [
+    <!ELEMENT bookstore (book+)>
+    <!ELEMENT book (title, author, price)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT author (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+]>
+<bookstore>
+    <book>
+        <title>Java</title>
+        <author>James</author>
+        <price>500</price>
+    </book>
+</bookstore>
+	
+
+20. Same bookstore using an external DTD file
+bookstore.xml
+	<?xml version="1.0"?>
+<!DOCTYPE bookstore SYSTEM "bookstore.dtd">
+<bookstore>
+    <book>
+        <title>Java</title>
+        <author>James</author>
+        <price>500</price>
+    </book>
+</bookstore>
+	
+
+bookstore.dtd
+	<!ELEMENT bookstore (book+)>
+<!ELEMENT book (title, author, price)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+	
+
+Note: + one or more, * zero or more, #PCDATA text, #REQUIRED attribute must be given. Open the .xml in a browser to see the tree. To check it against the DTD, use an online XML validator (e.g. xmlvalidation.com) or VS Code with the XML extension.
+6. Servlets (Generic, HTTP, Cookies, Sessions)
+21. Generic Servlet program to display “Hello Generic Servlet”
+HelloGeneric.java
+	import java.io.*;
+import javax.servlet.*;
+
+
+public class HelloGeneric extends GenericServlet {
+    public void service(ServletRequest req, ServletResponse res)
+            throws IOException {
+        res.setContentType("text/html");
+        res.getWriter().println("<h1>Hello Generic Servlet</h1>");
+    }
+}
+	
+
+web.xml
+	<web-app>
+    <servlet>
+        <servlet-name>g</servlet-name>
+        <servlet-class>HelloGeneric</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>g</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+</web-app>
+	
+
+Steps
+1. Folder: C:\xampp\tomcat\webapps\Generic\WEB-INF\ → put web.xml here and the .java files in WEB-INF\classes\
+1. Open cmd in classes → javac -cp "C:\xampp\tomcat\lib\servlet-api.jar" *.java
+1. Start Tomcat in the XAMPP Control Panel
+1. Browser: localhost:8080/Generic/hello
+22. HTTP Servlet program to display “Hello HTTP Servlet”
+HelloHttp.java
+	import java.io.*;
+import javax.servlet.http.*;
+
+
+public class HelloHttp extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
+        res.setContentType("text/html");
+        res.getWriter().println("<h1>Hello HTTP Servlet</h1>");
+    }
+}
+	
+
+web.xml
+	<web-app>
+    <servlet>
+        <servlet-name>h</servlet-name>
+        <servlet-class>HelloHttp</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>h</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+</web-app>
+	
+
+Steps
+1. Folder: C:\xampp\tomcat\webapps\Http\WEB-INF\ → put web.xml here and the .java files in WEB-INF\classes\
+1. Open cmd in classes → javac -cp "C:\xampp\tomcat\lib\servlet-api.jar" *.java
+1. Start Tomcat in the XAMPP Control Panel
+1. Browser: localhost:8080/Http/hello
+23. Write a Servlet to write and retrieve cookies
+CookieDemo.java
+	import java.io.*;
+import javax.servlet.http.*;
+
+
+public class CookieDemo extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
+        res.setContentType("text/html");
+        PrintWriter out = res.getWriter();
+
+
+        Cookie c = new Cookie("user", "MGIT");
+        res.addCookie(c);
+        out.println("Cookie created<br>");
+
+
+        Cookie[] cs = req.getCookies();
+        if (cs != null) {
+            for (Cookie x : cs) {
+                out.println(x);
+            }
+        }
+    }
+}
+	
+
+web.xml
+	<web-app>
+    <servlet>
+        <servlet-name>c</servlet-name>
+        <servlet-class>CookieDemo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>c</servlet-name>
+        <url-pattern>/cookie</url-pattern>
+    </servlet-mapping>
+</web-app>
+	
+
+Steps
+1. Folder: C:\xampp\tomcat\webapps\Cookie\WEB-INF\ → put web.xml here and the .java files in WEB-INF\classes\
+1. Open cmd in classes → javac -cp "C:\xampp\tomcat\lib\servlet-api.jar" *.java
+1. Start Tomcat in the XAMPP Control Panel
+1. Browser: localhost:8080/Cookie/cookie, then refresh the page to see the stored cookie
+24. Write a Servlet to implement HTTP Sessions
+SessionDemo.java
+	import java.io.*;
+import javax.servlet.http.*;
+
+
+public class SessionDemo extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
+        res.setContentType("text/html");
+        PrintWriter out = res.getWriter();
+
+
+        HttpSession s = req.getSession();
+        s.setAttribute("user", "MGIT");
+        out.println("Session created<br>");
+        out.println("Session ID: " + s.getId() + "<br>");
+        out.println("Welcome " + s.getAttribute("user"));
+    }
+}
+	
+
+web.xml
+	<web-app>
+    <servlet>
+        <servlet-name>s</servlet-name>
+        <servlet-class>SessionDemo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>s</servlet-name>
+        <url-pattern>/session</url-pattern>
+    </servlet-mapping>
+</web-app>
+	
+
+Steps
+1. Folder: C:\xampp\tomcat\webapps\Session\WEB-INF\ → put web.xml here and the .java files in WEB-INF\classes\
+1. Open cmd in classes → javac -cp "C:\xampp\tomcat\lib\servlet-api.jar" *.java
+1. Start Tomcat in the XAMPP Control Panel
+1. Browser: localhost:8080/Session/session
+7. Weather App (ES6)
+25. Explore ES6 features and implement a weather app using OpenWeatherMap to display temperature and weather description
+weather1.html
+	<!DOCTYPE html>
+<html>
+<body>
+    <input id="city" placeholder="Enter city">
+    <button onclick="getWeather()">Get Weather</button>
+    <p id="out"></p>
+
+
+    <script>
+        const key = "YOUR_API_KEY";
+        const url = "https://api.openweathermap.org/data/2.5/weather";
+
+
+        const getWeather = async () => {
+            let city = document.getElementById("city").value;
+            let res = await fetch(`${url}?q=${city}&appid=${key}`);
+            let data = await res.json();
+            document.getElementById("out").innerHTML = `
+                City: ${city} <br>
+                Temperature: ${data.main.temp} Kelvin <br>
+                Description: ${data.weather[0].description}
+            `;
+        };
+    </script>
+</body>
+</html>
+	
+
+Note: ES6 used: const/let, arrow function, async/await, template literals (`${}`). Get a free API key: sign up at openweathermap.org → My API keys, and paste it in place of YOUR_API_KEY.
+8. JDBC: DDL and CRUD
+26. Write a Java program to apply all DDL commands on a database
+DDL.java
+	import java.sql.*;
+
+
+public class DDL {
+    public static void main(String[] args) throws Exception {
+        String url = "jdbc:mysql://localhost:3306/studentdb";
+        Connection con = DriverManager.getConnection(url, "root", "");
+        Statement st = con.createStatement();
+
+
+        st.executeUpdate("CREATE TABLE student(id INT, name VARCHAR(20))");
+        System.out.println("Table created");
+
+
+        st.executeUpdate("ALTER TABLE student ADD age INT");
+        System.out.println("Table altered");
+
+
+        st.executeUpdate("RENAME TABLE student TO stud");
+        System.out.println("Table renamed");
+
+
+        st.executeUpdate("TRUNCATE TABLE stud");
+        System.out.println("Table truncated");
+
+
+        st.executeUpdate("DROP TABLE stud");
+        System.out.println("Table dropped");
+
+
+        con.close();
+    }
+}
+	
+
+Steps
+1. In MySQL: CREATE DATABASE studentdb;
+1. Put mysql-connector-j.jar in the same folder as the .java file
+1. Compile: javac DDL.java
+1. Run: java -cp ".;mysql-connector-j.jar" DDL
+1. Use your own MySQL password in place of ""
+27. Java program to perform CRUD operations (Create, Read, Update, Delete)
+CRUD.java
+	import java.sql.*;
+
+
+public class CRUD {
+    public static void main(String[] args) throws Exception {
+        String url = "jdbc:mysql://localhost:3306/studentdb";
+        Connection con = DriverManager.getConnection(url, "root", "");
+        Statement st = con.createStatement();
+        st.executeUpdate("CREATE TABLE IF NOT EXISTS student(id INT, name VARCHAR(20))");
+
+
+        st.executeUpdate("INSERT INTO student VALUES(1, 'Ravi'), (2, 'Teja')");
+        System.out.println("Inserted");
+
+
+        st.executeUpdate("UPDATE student SET name = 'Kiran' WHERE id = 1");
+        System.out.println("Updated");
+
+
+        st.executeUpdate("DELETE FROM student WHERE id = 2");
+        System.out.println("Deleted");
+
+
+        ResultSet rs = st.executeQuery("SELECT * FROM student");
+        while (rs.next()) {
+            System.out.println(rs.getInt(1) + " " + rs.getString(2));
+        }
+
+
+        con.close();
+    }
+}
+	
+
+Steps
+1. In MySQL: CREATE DATABASE studentdb;
+1. Put mysql-connector-j.jar in the same folder as the .java file
+1. Compile: javac CRUD.java
+1. Run: java -cp ".;mysql-connector-j.jar" CRUD
+1. Use your own MySQL password in place of ""
+9. Arrow Functions, Callbacks, Promises (Node)
+28. Arrow functions
+arrow1.js — add two numbers
+	const add = (a, b) => a + b;
+console.log(add(5, 3));
+	
+
+arrow2.js — square of a number
+	const square = n => n * n;
+console.log(square(4));
+	
+
+arrow3.js — even or odd
+	const evenOdd = n => (n % 2 == 0 ? "Even" : "Odd");
+console.log(evenOdd(7));
+	
+
+arrow4.js — max of two numbers
+	const max = (a, b) => (a > b ? a : b);
+console.log(max(6, 9));
+	
+
+Steps
+1. Install Node.js, keep all files in one folder
+1. Open cmd there → node arrow1.js (same for every file)
+29. Callbacks
+callback1.js — sum using a callback
+	function show(result) {
+    console.log("Sum = " + result);
+}
+
+
+function add(a, b, callback) {
+    callback(a + b);
+}
+
+
+add(5, 3, show);
+	
+
+callback2.js — even or odd
+	function check(n, callback) {
+    callback(n % 2 == 0 ? "Even" : "Odd");
+}
+
+
+check(10, msg => console.log(msg));
+	
+
+callback3.js — login then dashboard
+	function dashboard() {
+    console.log("Welcome to dashboard");
+}
+
+
+function login(user, callback) {
+    console.log("Logged in as " + user);
+    callback();
+}
+
+
+login("Ravi", dashboard);
+	
+
+callback4.js — setTimeout callback
+	console.log("Start");
+setTimeout(() => console.log("Printed after 2 seconds"), 2000);
+console.log("End");
+	
+
+Note: A callback is a function passed to another function and called later.
+30. Promises
+promise1.js — even or odd
+	function check(n) {
+    return new Promise((resolve, reject) => {
+        if (n % 2 == 0) resolve("Even");
+        else reject("Odd");
+    });
+}
+
+
+check(10)
+    .then(msg => console.log(msg))
+    .catch(err => console.log(err));
+	
+
+promise2.js — login system
+	function login(user) {
+    return new Promise((resolve, reject) => {
+        if (user == "admin") resolve("Login success");
+        else reject("Login failed");
+    });
+}
+
+
+login("admin")
+    .then(msg => console.log(msg))
+    .catch(err => console.log(err));
+	
+
+promise3.js — same as promise1 using async/await
+	function check(n) {
+    return new Promise((resolve, reject) => {
+        if (n % 2 == 0) resolve("Even");
+        else reject("Odd");
+    });
+}
+
+
+async function run() {
+    try {
+        console.log(await check(7));
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+run();
+	
+
+Note: resolve → goes to .then(); reject → goes to .catch().
+10. Extra: CSS
+31. Types of CSS (inline, internal, external) with selectors and hover
+index.html
+	<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        h1 { color: blue; }
+        .box { border: 2px solid black; padding: 10px; margin: 10px; }
+        #note { background: yellow; }
+        button:hover { background: green; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Internal CSS (element selector)</h1>
+    <p style="color: red;">Inline CSS</p>
+    <p class="ext">External CSS</p>
+    <div class="box">Class selector + box model</div>
+    <p id="note">ID selector</p>
+    <button>Hover me</button>
+</body>
+</html>
+	
+
+style.css
+	.ext {
+    color: purple;
+    font-size: 20px;
+}
+	
+
+32. Student results table with CSS: highlight topper, colour failed result, alternate rows, hover row
+results.html
+	<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table { border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; }
+        th { background: navy; color: white; }
+        tr:nth-child(even) { background: #eee; }
+        tr:hover { background: lightblue; }
+        .top { background: lightgreen; }
+        .fail { color: red; }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Marks</th>
+            <th>Result</th>
+        </tr>
+        <tr class="top">
+            <td>Ravi</td>
+            <td>95</td>
+            <td>Pass</td>
+        </tr>
+        <tr>
+            <td>Teja</td>
+            <td>72</td>
+            <td>Pass</td>
+        </tr>
+        <tr>
+            <td>Kiran</td>
+            <td>30</td>
+            <td class="fail">Fail</td>
+        </tr>
+    </table>
+</body>
+</html>
