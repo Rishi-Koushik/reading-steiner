@@ -32,10 +32,16 @@ ICON_PATH = os.path.join(APP_DIR, "assets", "icon.png")
 
 os.makedirs(CACHE_DIR, exist_ok=True)
 
-# Custom CSS styling for modern UI
+# Custom CSS styling for modern UI with True Black OLED optimization
 CSS_STYLE = b"""
+window, .background {
+    background-color: #000000;
+}
+
 headerbar {
     padding: 4px 8px;
+    background-color: #000000;
+    border-bottom: 1px solid #18181b;
 }
 
 .play-button {
@@ -60,16 +66,16 @@ headerbar {
 }
 
 .console-pane {
-    background-color: #11111b;
-    border-top: 1px solid #313244;
+    background-color: #000000;
+    border-top: 1px solid #18181b;
 }
 
 .status-bar-box {
-    background-color: #181825;
-    color: #a6adc8;
+    background-color: #000000;
+    color: #a1a1aa;
     font-size: 11px;
     padding: 2px 10px;
-    border-top: 1px solid #313244;
+    border-top: 1px solid #18181b;
 }
 
 .badge-error {
@@ -190,6 +196,9 @@ class HTMLNotepadWindow(Gtk.Window):
         self.ucm.connect("script-message-received::consoleLog", self.on_console_message)
 
         self.webview = WebKit2.WebView.new_with_user_content_manager(self.ucm)
+        # True Black OLED Canvas
+        bg_color = Gdk.RGBA(0, 0, 0, 1.0)
+        self.webview.set_background_color(bg_color)
         settings = self.webview.get_settings()
         settings.set_enable_javascript(True)
         settings.set_enable_webgl(True)
@@ -388,7 +397,11 @@ class HTMLNotepadWindow(Gtk.Window):
             self.editor_buffer.set_highlight_matching_brackets(True)
 
             self.style_manager = GtkSource.StyleSchemeManager.get_default()
-            scheme = self.style_manager.get_scheme("oblivion") or self.style_manager.get_scheme("classic")
+            scheme = (
+                self.style_manager.get_scheme("oled-black")
+                or self.style_manager.get_scheme("oblivion")
+                or self.style_manager.get_scheme("classic")
+            )
             if scheme:
                 self.editor_buffer.set_style_scheme(scheme)
 
@@ -554,9 +567,18 @@ class HTMLNotepadWindow(Gtk.Window):
         """Executes the HTML content inside the Execution Window."""
         code = self.get_editor_text()
 
-        # Inject the console interception script right into the head or beginning
+        # Inject the console interception script and OLED dark default styling
         injected_code = code
-        script_tag = f"<script>{CONSOLE_INJECTION_SCRIPT}</script>"
+        oled_style_tag = (
+            "<style id='reading-steiner-oled'>"
+            ":root { color-scheme: dark; }"
+            "body { background-color: #000000; color: #f4f4f5; font-family: system-ui, -apple-system, sans-serif; }"
+            "table { border-color: #3f3f46; }"
+            "td, th { border-color: #3f3f46; }"
+            "input, select, textarea, button { background-color: #18181b; color: #f4f4f5; border: 1px solid #3f3f46; }"
+            "</style>"
+        )
+        script_tag = f"<script>{CONSOLE_INJECTION_SCRIPT}</script>\n{oled_style_tag}"
 
         if "<head>" in injected_code:
             injected_code = injected_code.replace("<head>", f"<head>\n{script_tag}", 1)
@@ -664,8 +686,8 @@ class HTMLNotepadWindow(Gtk.Window):
     def toggle_theme(self):
         self.dark_mode = not self.dark_mode
         if HAS_GTKSOURCE:
-            scheme_id = "oblivion" if self.dark_mode else "classic"
-            scheme = self.style_manager.get_scheme(scheme_id)
+            scheme_id = "oled-black" if self.dark_mode else "classic"
+            scheme = self.style_manager.get_scheme(scheme_id) or self.style_manager.get_scheme("oblivion")
             if scheme:
                 self.editor_buffer.set_style_scheme(scheme)
 
