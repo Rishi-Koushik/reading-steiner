@@ -82,7 +82,7 @@
         "name": "lists.html",
         "description": "",
         "language": "html",
-        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <h3>Ordered List</h3>\n    <ol>\n        <li>HTML</li>\n        <li>CSS</li>\n    </ol>\n\n\n    <h3>Unordered List</h3>\n    <ul>\n        <li>Java</li>\n        <li>Python</li>\n    </ul>\n\n\n    <h3>Description List</h3>\n    <dl>\n        <dt>HTML</dt>\n        <dd>HyperText Markup Language</dd>\n    </dl>\n\n\n    <h3>Nested List</h3>\n    <ul>\n        <li>MGIT\n            <ol>\n                <li>CSE\n                    <ul>\n                        <li>B.Tech</li>\n                    </ul>\n                </li>\n            </ol>\n        </li>\n    </ul>\n</body>\n</html>\n\n\n2. Bootstrap"
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <h3>Ordered List</h3>\n    <ol>\n        <li>HTML</li>\n        <li>CSS</li>\n    </ol>\n\n\n    <h3>Unordered List</h3>\n    <ul>\n        <li>Java</li>\n        <li>Python</li>\n    </ul>\n\n\n    <h3>Description List</h3>\n    <dl>\n        <dt>HTML</dt>\n        <dd>HyperText Markup Language</dd>\n    </dl>\n\n\n    <h3>Nested List</h3>\n    <ul>\n        <li>MGIT\n            <ol>\n                <li>CSE\n                    <ul>\n                        <li>B.Tech</li>\n                    </ul>\n                </li>\n            </ol>\n        </li>\n    </ul>\n</body>\n</html>"
       }
     ],
     "instruction": ""
@@ -138,7 +138,7 @@
         "name": "pictures.html",
         "description": "",
         "language": "html",
-        "code": "<!DOCTYPE html>\n<html>\n<head>\n    <link rel=\"stylesheet\"\n        href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\">\n</head>\n<body class=\"container\">\n    <h2>Picture Grid</h2>\n    <div class=\"row\">\n        <div class=\"col-4\"><img src=\"1.jpg\" class=\"img-fluid rounded\"></div>\n        <div class=\"col-4\"><img src=\"2.jpg\" class=\"img-fluid img-thumbnail\"></div>\n        <div class=\"col-4\"><img src=\"3.jpg\" class=\"img-fluid rounded-circle\"></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-4\"><img src=\"4.jpg\" class=\"img-fluid rounded\"></div>\n        <div class=\"col-4\"><img src=\"5.jpg\" class=\"img-fluid img-thumbnail\"></div>\n        <div class=\"col-4\"><img src=\"6.jpg\" class=\"img-fluid rounded-circle\"></div>\n    </div>\n</body>\n</html>\n\n\n3. JavaScript"
+        "code": "<!DOCTYPE html>\n<html>\n<head>\n    <link rel=\"stylesheet\"\n        href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\">\n</head>\n<body class=\"container\">\n    <h2>Picture Grid</h2>\n    <div class=\"row\">\n        <div class=\"col-4\"><img src=\"1.jpg\" class=\"img-fluid rounded\"></div>\n        <div class=\"col-4\"><img src=\"2.jpg\" class=\"img-fluid img-thumbnail\"></div>\n        <div class=\"col-4\"><img src=\"3.jpg\" class=\"img-fluid rounded-circle\"></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-4\"><img src=\"4.jpg\" class=\"img-fluid rounded\"></div>\n        <div class=\"col-4\"><img src=\"5.jpg\" class=\"img-fluid img-thumbnail\"></div>\n        <div class=\"col-4\"><img src=\"6.jpg\" class=\"img-fluid rounded-circle\"></div>\n    </div>\n</body>\n</html>"
       }
     ],
     "instruction": "Note: Put 1.jpg \u2026 6.jpg in the same folder."
@@ -262,7 +262,7 @@
         "name": "regex3.html",
         "description": "replace(): replace a word (g = all, i = ignore case)",
         "language": "html",
-        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        let text = \"I like Java. java is easy.\";\n        document.write(text.replace(/java/gi, \"JavaScript\"));\n    </script>\n</body>\n</html>\n\n\n4. JS Validation (Registration + Login)"
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <script>\n        let text = \"I like Java. java is easy.\";\n        document.write(text.replace(/java/gi, \"JavaScript\"));\n    </script>\n</body>\n</html>"
       }
     ],
     "instruction": "Note: ^ start, $ end, \\d digit, {10} exactly 10, + one or more, g global, i ignore case."
@@ -310,7 +310,7 @@
         "name": "bookstore.dtd",
         "description": "",
         "language": "xml",
-        "code": "<!ELEMENT bookstore (book+)>\n<!ELEMENT book (title, author, price)>\n<!ELEMENT title (#PCDATA)>\n<!ELEMENT author (#PCDATA)>\n<!ELEMENT price (#PCDATA)>\n\n\n6. Servlets (Generic, HTTP, Cookies, Sessions)"
+        "code": "<!ELEMENT bookstore (book+)>\n<!ELEMENT book (title, author, price)>\n<!ELEMENT title (#PCDATA)>\n<!ELEMENT author (#PCDATA)>\n<!ELEMENT price (#PCDATA)>"
       }
     ],
     "instruction": "Note: + one or more, * zero or more, #PCDATA text, #REQUIRED attribute must be given. Open the .xml in a browser to see the tree. To check it against the DTD, use an online XML validator (e.g. xmlvalidation.com) or VS Code with the XML extension."
@@ -330,10 +330,10 @@
         "name": "web.xml",
         "description": "",
         "language": "xml",
-        "code": "<web-app>\n    <servlet>\n        <servlet-name>g</servlet-name>\n        <servlet-class>HelloGeneric</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>g</servlet-name>\n        <url-pattern>/hello</url-pattern>\n    </servlet-mapping>\n</web-app>\n\n\nSteps"
+        "code": "<web-app>\n    <servlet>\n        <servlet-name>g</servlet-name>\n        <servlet-class>HelloGeneric</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>g</servlet-name>\n        <url-pattern>/hello</url-pattern>\n    </servlet-mapping>\n</web-app>"
       }
     ],
-    "instruction": "1. Folder: C:\\xampp\\tomcat\\webapps\\Generic\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Generic/hello"
+    "instruction": "Steps\n1. Folder: C:\\xampp\\tomcat\\webapps\\Generic\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Generic/hello"
   },
   {
     "number": 22,
@@ -350,10 +350,10 @@
         "name": "web.xml",
         "description": "",
         "language": "xml",
-        "code": "<web-app>\n    <servlet>\n        <servlet-name>h</servlet-name>\n        <servlet-class>HelloHttp</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>h</servlet-name>\n        <url-pattern>/hello</url-pattern>\n    </servlet-mapping>\n</web-app>\n\n\nSteps"
+        "code": "<web-app>\n    <servlet>\n        <servlet-name>h</servlet-name>\n        <servlet-class>HelloHttp</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>h</servlet-name>\n        <url-pattern>/hello</url-pattern>\n    </servlet-mapping>\n</web-app>"
       }
     ],
-    "instruction": "1. Folder: C:\\xampp\\tomcat\\webapps\\Http\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Http/hello"
+    "instruction": "Steps\n1. Folder: C:\\xampp\\tomcat\\webapps\\Http\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Http/hello"
   },
   {
     "number": 23,
@@ -370,10 +370,10 @@
         "name": "web.xml",
         "description": "",
         "language": "xml",
-        "code": "<web-app>\n    <servlet>\n        <servlet-name>c</servlet-name>\n        <servlet-class>CookieDemo</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>c</servlet-name>\n        <url-pattern>/cookie</url-pattern>\n    </servlet-mapping>\n</web-app>\n\n\nSteps"
+        "code": "<web-app>\n    <servlet>\n        <servlet-name>c</servlet-name>\n        <servlet-class>CookieDemo</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>c</servlet-name>\n        <url-pattern>/cookie</url-pattern>\n    </servlet-mapping>\n</web-app>"
       }
     ],
-    "instruction": "1. Folder: C:\\xampp\\tomcat\\webapps\\Cookie\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Cookie/cookie, then refresh the page to see the stored cookie"
+    "instruction": "Steps\n1. Folder: C:\\xampp\\tomcat\\webapps\\Cookie\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Cookie/cookie, then refresh the page to see the stored cookie"
   },
   {
     "number": 24,
@@ -390,10 +390,10 @@
         "name": "web.xml",
         "description": "",
         "language": "xml",
-        "code": "<web-app>\n    <servlet>\n        <servlet-name>s</servlet-name>\n        <servlet-class>SessionDemo</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>s</servlet-name>\n        <url-pattern>/session</url-pattern>\n    </servlet-mapping>\n</web-app>\n\n\nSteps\n7. Weather App (ES6)"
+        "code": "<web-app>\n    <servlet>\n        <servlet-name>s</servlet-name>\n        <servlet-class>SessionDemo</servlet-class>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>s</servlet-name>\n        <url-pattern>/session</url-pattern>\n    </servlet-mapping>\n</web-app>"
       }
     ],
-    "instruction": "1. Folder: C:\\xampp\\tomcat\\webapps\\Session\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Session/session"
+    "instruction": "Steps\n1. Folder: C:\\xampp\\tomcat\\webapps\\Session\\WEB-INF\\ \u2192 put web.xml here and the .java files in WEB-INF\\classes\\\n1. Open cmd in classes \u2192 javac -cp \"C:\\xampp\\tomcat\\lib\\servlet-api.jar\" *.java\n1. Start Tomcat in the XAMPP Control Panel\n1. Browser: localhost:8080/Session/session"
   },
   {
     "number": 25,
@@ -404,7 +404,7 @@
         "name": "weather1.html",
         "description": "",
         "language": "html",
-        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <input id=\"city\" placeholder=\"Enter city\">\n    <button onclick=\"getWeather()\">Get Weather</button>\n    <p id=\"out\"></p>\n\n\n    <script>\n        const key = \"YOUR_API_KEY\";\n        const url = \"https://api.openweathermap.org/data/2.5/weather\";\n\n\n        const getWeather = async () => {\n            let city = document.getElementById(\"city\").value;\n            let res = await fetch(`${url}?q=${city}&appid=${key}`);\n            let data = await res.json();\n            document.getElementById(\"out\").innerHTML = `\n                City: ${city} <br>\n                Temperature: ${data.main.temp} Kelvin <br>\n                Description: ${data.weather[0].description}\n            `;\n        };\n    </script>\n</body>\n</html>\n\n\n8. JDBC: DDL and CRUD"
+        "code": "<!DOCTYPE html>\n<html>\n<body>\n    <input id=\"city\" placeholder=\"Enter city\">\n    <button onclick=\"getWeather()\">Get Weather</button>\n    <p id=\"out\"></p>\n\n\n    <script>\n        const key = \"YOUR_API_KEY\";\n        const url = \"https://api.openweathermap.org/data/2.5/weather\";\n\n\n        const getWeather = async () => {\n            let city = document.getElementById(\"city\").value;\n            let res = await fetch(`${url}?q=${city}&appid=${key}`);\n            let data = await res.json();\n            document.getElementById(\"out\").innerHTML = `\n                City: ${city} <br>\n                Temperature: ${data.main.temp} Kelvin <br>\n                Description: ${data.weather[0].description}\n            `;\n        };\n    </script>\n</body>\n</html>"
       }
     ],
     "instruction": "Note: ES6 used: const/let, arrow function, async/await, template literals (`${}`). Get a free API key: sign up at openweathermap.org \u2192 My API keys, and paste it in place of YOUR_API_KEY."
@@ -418,10 +418,10 @@
         "name": "DDL.java",
         "description": "",
         "language": "java",
-        "code": "import java.sql.*;\n\n\npublic class DDL {\n    public static void main(String[] args) throws Exception {\n        String url = \"jdbc:mysql://localhost:3306/studentdb\";\n        Connection con = DriverManager.getConnection(url, \"root\", \"\");\n        Statement st = con.createStatement();\n\n\n        st.executeUpdate(\"CREATE TABLE student(id INT, name VARCHAR(20))\");\n        System.out.println(\"Table created\");\n\n\n        st.executeUpdate(\"ALTER TABLE student ADD age INT\");\n        System.out.println(\"Table altered\");\n\n\n        st.executeUpdate(\"RENAME TABLE student TO stud\");\n        System.out.println(\"Table renamed\");\n\n\n        st.executeUpdate(\"TRUNCATE TABLE stud\");\n        System.out.println(\"Table truncated\");\n\n\n        st.executeUpdate(\"DROP TABLE stud\");\n        System.out.println(\"Table dropped\");\n\n\n        con.close();\n    }\n}\n\n\nSteps"
+        "code": "import java.sql.*;\n\n\npublic class DDL {\n    public static void main(String[] args) throws Exception {\n        String url = \"jdbc:mysql://localhost:3306/studentdb\";\n        Connection con = DriverManager.getConnection(url, \"root\", \"\");\n        Statement st = con.createStatement();\n\n\n        st.executeUpdate(\"CREATE TABLE student(id INT, name VARCHAR(20))\");\n        System.out.println(\"Table created\");\n\n\n        st.executeUpdate(\"ALTER TABLE student ADD age INT\");\n        System.out.println(\"Table altered\");\n\n\n        st.executeUpdate(\"RENAME TABLE student TO stud\");\n        System.out.println(\"Table renamed\");\n\n\n        st.executeUpdate(\"TRUNCATE TABLE stud\");\n        System.out.println(\"Table truncated\");\n\n\n        st.executeUpdate(\"DROP TABLE stud\");\n        System.out.println(\"Table dropped\");\n\n\n        con.close();\n    }\n}"
       }
     ],
-    "instruction": "1. In MySQL: CREATE DATABASE studentdb;\n1. Put mysql-connector-j.jar in the same folder as the .java file\n1. Compile: javac DDL.java\n1. Run: java -cp \".;mysql-connector-j.jar\" DDL\n1. Use your own MySQL password in place of \"\""
+    "instruction": "Steps\n1. In MySQL: CREATE DATABASE studentdb;\n1. Put mysql-connector-j.jar in the same folder as the .java file\n1. Compile: javac DDL.java\n1. Run: java -cp \".;mysql-connector-j.jar\" DDL\n1. Use your own MySQL password in place of \"\""
   },
   {
     "number": 27,
@@ -432,10 +432,10 @@
         "name": "CRUD.java",
         "description": "",
         "language": "java",
-        "code": "import java.sql.*;\n\n\npublic class CRUD {\n    public static void main(String[] args) throws Exception {\n        String url = \"jdbc:mysql://localhost:3306/studentdb\";\n        Connection con = DriverManager.getConnection(url, \"root\", \"\");\n        Statement st = con.createStatement();\n        st.executeUpdate(\"CREATE TABLE IF NOT EXISTS student(id INT, name VARCHAR(20))\");\n\n\n        st.executeUpdate(\"INSERT INTO student VALUES(1, 'Ravi'), (2, 'Teja')\");\n        System.out.println(\"Inserted\");\n\n\n        st.executeUpdate(\"UPDATE student SET name = 'Kiran' WHERE id = 1\");\n        System.out.println(\"Updated\");\n\n\n        st.executeUpdate(\"DELETE FROM student WHERE id = 2\");\n        System.out.println(\"Deleted\");\n\n\n        ResultSet rs = st.executeQuery(\"SELECT * FROM student\");\n        while (rs.next()) {\n            System.out.println(rs.getInt(1) + \" \" + rs.getString(2));\n        }\n\n\n        con.close();\n    }\n}\n\n\nSteps\n9. Arrow Functions, Callbacks, Promises (Node)"
+        "code": "import java.sql.*;\n\n\npublic class CRUD {\n    public static void main(String[] args) throws Exception {\n        String url = \"jdbc:mysql://localhost:3306/studentdb\";\n        Connection con = DriverManager.getConnection(url, \"root\", \"\");\n        Statement st = con.createStatement();\n        st.executeUpdate(\"CREATE TABLE IF NOT EXISTS student(id INT, name VARCHAR(20))\");\n\n\n        st.executeUpdate(\"INSERT INTO student VALUES(1, 'Ravi'), (2, 'Teja')\");\n        System.out.println(\"Inserted\");\n\n\n        st.executeUpdate(\"UPDATE student SET name = 'Kiran' WHERE id = 1\");\n        System.out.println(\"Updated\");\n\n\n        st.executeUpdate(\"DELETE FROM student WHERE id = 2\");\n        System.out.println(\"Deleted\");\n\n\n        ResultSet rs = st.executeQuery(\"SELECT * FROM student\");\n        while (rs.next()) {\n            System.out.println(rs.getInt(1) + \" \" + rs.getString(2));\n        }\n\n\n        con.close();\n    }\n}"
       }
     ],
-    "instruction": "1. In MySQL: CREATE DATABASE studentdb;\n1. Put mysql-connector-j.jar in the same folder as the .java file\n1. Compile: javac CRUD.java\n1. Run: java -cp \".;mysql-connector-j.jar\" CRUD\n1. Use your own MySQL password in place of \"\""
+    "instruction": "Steps\n1. In MySQL: CREATE DATABASE studentdb;\n1. Put mysql-connector-j.jar in the same folder as the .java file\n1. Compile: javac CRUD.java\n1. Run: java -cp \".;mysql-connector-j.jar\" CRUD\n1. Use your own MySQL password in place of \"\""
   },
   {
     "number": 28,
@@ -464,10 +464,10 @@
         "name": "arrow4.js",
         "description": "max of two numbers",
         "language": "javascript",
-        "code": "const max = (a, b) => (a > b ? a : b);\nconsole.log(max(6, 9));\n\n\nSteps"
+        "code": "const max = (a, b) => (a > b ? a : b);\nconsole.log(max(6, 9));"
       }
     ],
-    "instruction": "1. Install Node.js, keep all files in one folder\n1. Open cmd there \u2192 node arrow1.js (same for every file)"
+    "instruction": "Steps\n1. Install Node.js, keep all files in one folder\n1. Open cmd there \u2192 node arrow1.js (same for every file)"
   },
   {
     "number": 29,
@@ -522,7 +522,7 @@
         "name": "promise3.js",
         "description": "same as promise1 using async/await",
         "language": "javascript",
-        "code": "function check(n) {\n    return new Promise((resolve, reject) => {\n        if (n % 2 == 0) resolve(\"Even\");\n        else reject(\"Odd\");\n    });\n}\n\n\nasync function run() {\n    try {\n        console.log(await check(7));\n    } catch (err) {\n        console.log(err);\n    }\n}\n\n\nrun();\n\n\n10. Extra: CSS"
+        "code": "function check(n) {\n    return new Promise((resolve, reject) => {\n        if (n % 2 == 0) resolve(\"Even\");\n        else reject(\"Odd\");\n    });\n}\n\n\nasync function run() {\n    try {\n        console.log(await check(7));\n    } catch (err) {\n        console.log(err);\n    }\n}\n\n\nrun();"
       }
     ],
     "instruction": "Note: resolve \u2192 goes to .then(); reject \u2192 goes to .catch()."

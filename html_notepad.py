@@ -701,13 +701,24 @@ class HTMLNotepadWindow(Gtk.Window):
         self.editor_buffer.set_text(text)
 
     def execute_code(self):
-        """Executes code: auto-detects Node.js scripts vs WebKit HTML preview."""
+        """Executes code: auto-detects XML, Java/Servlets, Node.js scripts vs WebKit HTML preview."""
         code = self.get_editor_text()
         if not code.strip():
             self.exec_status_lbl.set_text("Ready")
             return
 
-        # Auto-detect if this is a Node.js / pure JavaScript script
+        # 1. XML / DTD Validation
+        if (self.current_filepath and (self.current_filepath.endswith(".xml") or self.current_filepath.endswith(".dtd"))) or (code.strip().startswith("<?xml") or "<!doctype bookstore" in code.lower() or "<!element" in code.lower()):
+            if not ("<html" in code.lower() or "<!doctype html" in code.lower()):
+                self.execute_xml_validation(code)
+                return
+
+        # 2. Java / Servlet Compilation & Preview
+        if (self.current_filepath and self.current_filepath.endswith(".java")) or ("import java." in code or "javax.servlet" in code):
+            self.execute_java_servlet(code)
+            return
+
+        # 3. Auto-detect if this is a Node.js / pure JavaScript script
         is_node = False
         if self.current_filepath and self.current_filepath.endswith(".js"):
             is_node = True
@@ -719,7 +730,7 @@ class HTMLNotepadWindow(Gtk.Window):
             self.execute_node_code(code)
             return
 
-        # Inject the console interception script and OLED dark default styling
+        # 4. Inject the console interception script and OLED dark default styling for HTML/Web
         injected_code = code
         oled_style_tag = (
             "<style id='reading-steiner-oled'>"
@@ -827,6 +838,148 @@ class HTMLNotepadWindow(Gtk.Window):
                 GLib.idle_add(update_err)
 
         threading.Thread(target=run_thread, daemon=True).start()
+
+    def execute_xml_validation(self, code):
+        """Validates XML documents with internal or external DTD using xmllint and renders output."""
+        self.btn_console.set_active(True)
+        self.clear_console()
+
+        now_str = datetime.now().strftime("%H:%M:%S")
+        end_iter = self.console_buffer.get_end_iter()
+        self.console_buffer.insert_with_tags(end_iter, f"[{now_str}] ", self.tag_time)
+        file_label = self.current_filepath if self.current_filepath else "document.xml"
+        self.console_buffer.insert_with_tags(end_iter, f"[XML] Validating {file_label} with DTD validator (xmllint)...\n\n", self.tag_info)
+
+        tmp_dir = os.path.join(CACHE_DIR, "xml_sandbox")
+        os.makedirs(tmp_dir, exist_ok=True)
+        xml_path = os.path.join(tmp_dir, file_label)
+        with open(xml_path, "w", encoding="utf-8") as f:
+            f.write(code)
+
+        # If bookstore.xml is being validated, ensure bookstore.dtd is also in sandbox
+        if "bookstore" in file_label.lower():
+            for p in self.lab_programs:
+                for fl in p.get("files", []):
+                    if fl["name"] == "bookstore.dtd":
+                        with open(os.path.join(tmp_dir, "bookstore.dtd"), "w", encoding="utf-8") as dtd_f:
+                            dtd_f.write(fl["code"])
+
+        res = subprocess.run(["xmllint", "--valid", "--noout", xml_path], capture_output=True, text=True)
+        iter_end = self.console_buffer.get_end_iter()
+        t_str = datetime.now().strftime("%H:%M:%S")
+
+        if res.returncode == 0:
+            self.console_buffer.insert_with_tags(
+                iter_end,
+                f"[{t_str}] [XML] ✅ Document is WELL-FORMED and VALID against DTD!\n",
+                self.tag_info
+            )
+            self.exec_status_lbl.set_markup("<span foreground='#22c55e'>● XML DTD Validated</span>")
+        else:
+            self.console_buffer.insert_with_tags(iter_end, res.stderr + "\n", self.tag_error)
+            self.console_buffer.insert_with_tags(
+                iter_end,
+                f"[{t_str}] [XML] ❌ DTD Validation failed (see error details above)\n",
+                self.tag_error
+            )
+            self.exec_status_lbl.set_markup("<span foreground='#ef4444'>● XML Validation Error</span>")
+
+        # Display rendered XML view in WebKit window
+        self.ensure_execution_window()
+        escaped_xml = code.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        badge_color = "#064e3b" if res.returncode == 0 else "#7f1d1d"
+        badge_text_color = "#34d399" if res.returncode == 0 else "#fca5a5"
+        status_text = "✅ XML Document Well-Formed & Valid against DTD" if res.returncode == 0 else "❌ XML Validation Errors Detected"
+
+        html_view = f"""<!DOCTYPE html>
+        <html>
+        <head>
+          <style>
+            body {{ background: #000000; color: #f4f4f5; font-family: monospace; padding: 24px; font-size: 14px; line-height: 1.6; }}
+            .status {{ background: {badge_color}; color: {badge_text_color}; padding: 12px 18px; border-radius: 8px; margin-bottom: 20px; font-family: system-ui, sans-serif; font-weight: bold; }}
+            pre {{ background: #09090b; padding: 16px; border-radius: 8px; border: 1px solid #27272a; overflow-x: auto; }}
+          </style>
+        </head>
+        <body>
+          <div class="status">{status_text}</div>
+          <pre><code>{escaped_xml}</code></pre>
+        </body>
+        </html>"""
+        self.webview.load_html(html_view, f"file://{tmp_dir}/")
+        self.execution_window.show_all()
+        self.execution_window.present()
+
+    def execute_java_servlet(self, code):
+        """Compiles Java / Servlets using javac with servlet-api.jar and previews servlet output."""
+        self.btn_console.set_active(True)
+        self.clear_console()
+
+        now_str = datetime.now().strftime("%H:%M:%S")
+        end_iter = self.console_buffer.get_end_iter()
+        self.console_buffer.insert_with_tags(end_iter, f"[{now_str}] ", self.tag_time)
+        file_label = self.current_filepath if self.current_filepath else "Servlet.java"
+        self.console_buffer.insert_with_tags(end_iter, f"[JAVA] Compiling {file_label} with javac (Temurin JDK 21)...\n", self.tag_info)
+
+        tmp_dir = os.path.join(CACHE_DIR, "servlet_sandbox")
+        os.makedirs(tmp_dir, exist_ok=True)
+        java_path = os.path.join(tmp_dir, file_label)
+        with open(java_path, "w", encoding="utf-8") as f:
+            f.write(code)
+
+        servlet_jar = os.path.join(APP_DIR, "assets", "lib", "servlet-api.jar")
+        classpath = f".:{servlet_jar}"
+
+        javac_cmd = ["javac", "-cp", classpath, java_path]
+        res = subprocess.run(javac_cmd, capture_output=True, text=True)
+        iter_end = self.console_buffer.get_end_iter()
+        t_str = datetime.now().strftime("%H:%M:%S")
+
+        if res.returncode == 0:
+            self.console_buffer.insert_with_tags(
+                iter_end,
+                f"[{t_str}] [JAVA] ✅ Compilation SUCCESSFUL! (0 errors, bytecode generated)\n",
+                self.tag_info
+            )
+            self.console_buffer.insert_with_tags(
+                iter_end,
+                f"[{t_str}] [SERVLET] Simulating Tomcat HTTP Container Request → http://localhost:8080/{file_label.replace('.java','')}/...\n",
+                self.tag_log
+            )
+            self.exec_status_lbl.set_markup("<span foreground='#22c55e'>● Java Compiled &amp; Verified</span>")
+
+            # Extract HTML strings generated by out.println(...) or out.print(...)
+            import re
+            html_parts = re.findall(r'out\.print(?:ln)?\s*\(\s*"([^"]*)"\s*\)', code)
+            rendered_body = "".join(html_parts)
+            if not rendered_body:
+                rendered_body = f"<h2>Servlet {file_label} compiled successfully!</h2><p>Bytecode generated and ready for deployment in Apache Tomcat.</p>"
+
+            self.ensure_execution_window()
+            preview_html = f"""<!DOCTYPE html>
+            <html>
+            <head>
+              <style>
+                body {{ background: #000000; color: #f4f4f5; font-family: system-ui, sans-serif; padding: 30px; }}
+                .badge {{ display: inline-block; background: #1e3a8a; color: #93c5fd; padding: 6px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 20px; font-weight: bold; border: 1px solid #1d4ed8; }}
+                .container {{ background: #09090b; padding: 24px; border-radius: 12px; border: 1px solid #27272a; }}
+              </style>
+            </head>
+            <body>
+              <div class="badge">☕ Apache Tomcat HTTP Servlet Preview (Status 200 OK)</div>
+              <div class="container">{rendered_body}</div>
+            </body>
+            </html>"""
+            self.webview.load_html(preview_html, "file:///")
+            self.execution_window.show_all()
+            self.execution_window.present()
+        else:
+            self.console_buffer.insert_with_tags(iter_end, res.stderr + "\n", self.tag_error)
+            self.console_buffer.insert_with_tags(
+                iter_end,
+                f"[{t_str}] [JAVA] ❌ Compilation failed with error (check syntax above)\n",
+                self.tag_error
+            )
+            self.exec_status_lbl.set_markup("<span foreground='#ef4444'>● Java Compilation Error</span>")
 
     def load_lab_file(self, prog, file_item):
         """Loads a program file from the Lab Exam PDF into the editor with language detection."""

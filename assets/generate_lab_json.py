@@ -20,6 +20,12 @@ unit_matchers = [
     (31, "10. Extra: CSS")
 ]
 
+unit_headers = [
+    "1. HTML", "2. Bootstrap", "3. JavaScript", "4. JS Validation",
+    "5. XML with DTD", "6. Servlets", "7. Weather App", "8. JDBC",
+    "9. Arrow Functions", "9. Node.js", "10. Extra: CSS"
+]
+
 def get_unit_for_prog(prog_num):
     matched_unit = unit_matchers[0][1]
     for min_p, u_name in unit_matchers:
@@ -36,12 +42,18 @@ while i < len(lines):
     line = lines[i]
     line_s = line.strip()
     
+    # Check if this line is a unit header
+    if any(line_s.startswith(u) for u in unit_headers) and not any(line_s.startswith(f"{x}.") for x in range(1, 33) if not line_s.startswith("1. HTML") and not line_s.startswith("2. Bootstrap")):
+        current_file = None
+        i += 1
+        continue
+        
     # Check if this line is a program header
     m = prog_header_pattern.match(line_s)
     if m:
         pnum = int(m.group(1))
         ptitle = m.group(2)
-        # Verify it's a valid program 1..32 and not an instruction
+        # Verify it's a valid program 1..32 and not an instruction/unit
         if 1 <= pnum <= 32 and not any(ptitle.startswith(x) for x in ['Folder:', 'Open', 'Start', 'Browser:', 'In MySQL', 'Put', 'Compile:', 'Run:', 'Use your', 'Install', 'HTML', 'Bootstrap', 'JavaScript', 'JS Validation', 'XML with DTD', 'Servlets', 'Weather App', 'JDBC', 'Arrow Functions', 'Extra: CSS']):
             current_prog = {
                 "number": pnum,
@@ -77,8 +89,9 @@ while i < len(lines):
             i += 1
             continue
             
-        if line_s.startswith("1. ") or line_s.startswith("Note:") or line_s.startswith("Register:") or line_s.startswith("Login:"):
+        if line_s.startswith("1. ") or line_s.startswith("Note:") or line_s.startswith("Register:") or line_s.startswith("Login:") or line_s.startswith("Steps"):
             current_prog["instructions"].append(line_s)
+            current_file = None # Stop capturing code lines when a note/step appears!
             i += 1
             continue
             
@@ -112,7 +125,4 @@ for p in all_programs:
 with open('/home/orsted/Projects/reading-steiner/assets/lab_programs.json', 'w', encoding='utf-8') as out_f:
     json.dump(final_list, out_f, indent=2)
 
-print(f"Generated {len(final_list)} programs into lab_programs.json")
-for p in final_list:
-    files_str = ", ".join([f["name"] for f in p["files"]])
-    print(f"P{p['number']:02d}: {p['title'][:35]} -> [{files_str}]")
+print(f"Regenerated {len(final_list)} programs cleanly into lab_programs.json")
