@@ -75,3 +75,14 @@ Or open `/home/orsted/Projects/html-notepad/web/index.html` in any browser.
 | **`Ctrl + -`** | Decrease Code Font Size |
 | **`Tab`** | Indent with 2 Spaces |
 | **`Ctrl + F`** | Search text in editor |
+
+---
+
+## 👥 Contributors
+
+- **Rishi Koushik** ([@Rishi-Koushik](https://github.com/Rishi-Koushik)) - Creator & Lead Developer
+- **Antigravity** ([Google DeepMind](https://deepmind.google/)) - AI Contributor
+- **Claude** ([Anthropic](https://anthropic.com/)) - AI Contributor
+
+See [CONTRIBUTORS.md](CONTRIBUTORS.md) for full contributor details.
+
